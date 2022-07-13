@@ -1,0 +1,4 @@
+beautifulsoup4==4.11.1
+requests==2.27.1
+requests-toolbelt==0.9.1
+simplejson==3.17.6
