@@ -96,6 +96,7 @@ def main():
     username = args.username
     password = args.password
     verify = args.verify
+    TIMEOUT = 5
 
     if username is not None and password is None:
 
@@ -109,7 +110,7 @@ def main():
             login_url = DarktraceConnector._get_phantom_base_url() + "/login"
 
             print("Accessing the Login page")
-            token_resp = requests.get(login_url, verify=verify)
+            token_resp = requests.get(login_url, verify=verify, timeout=TIMEOUT)
             csrftoken = token_resp.cookies["csrftoken"]
 
             data = dict()
@@ -122,7 +123,7 @@ def main():
             headers["Referer"] = login_url
 
             print("Logging into Platform to get the session id")
-            login_resp = requests.post(login_url, verify=verify, data=data, headers=headers)
+            login_resp = requests.post(login_url, verify=verify, data=data, headers=headers, timeout=TIMEOUT)
             session_id = login_resp.cookies["sessionid"]
         except Exception as ex:
             print("Unable to get session id from the platform. Error: " + str(ex))

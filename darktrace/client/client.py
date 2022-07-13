@@ -188,6 +188,8 @@ class DarktraceClient:
             **(headers or {}),
         }
 
+        TIMEOUT = 10
+
         return requests.request(
             method=method,
             url=url,
@@ -196,6 +198,7 @@ class DarktraceClient:
             json=json,
             headers=headers,
             verify=self._use_tsl_certificate,
+            timeout=TIMEOUT
         )
 
     def _create_headers(
