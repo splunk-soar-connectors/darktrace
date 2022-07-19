@@ -1,0 +1,6 @@
+[TYPECHECK]
+ignored-modules=phantom
+disable=use-dict-literal,use-list-literal
+
+[FORMAT]
+good-names=fh,ip,ex,i

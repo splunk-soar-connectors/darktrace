@@ -1,0 +1,13 @@
+"""Darktrace API Endpoints"""
+
+MODEL_BREACH_ENDPOINT = "/modelbreaches"
+ACK_BREACH = "/acknowledge"
+UNACK_BREACH = "/unacknowledge"
+COMMENT_BREACH = "/comments"
+TEST_CONNECTIVITY_ENDPOINT = "/summarystatistics"
+TAG_ENTITIES_ENDPOINT = "/tags/entities"
+MODEL_BREACH_CONNECTIONS_ENDPOINT = "/details"
+MODEL_BREACH_COMMENT_ENDPOINT = "/mbcomments"
+DEVICES_ENDPOINT = "/devices"
+DEVICE_SUMMARY_ENDPOINT = "/devicesummary"
+AI_ANALYST_ENDPOINT = "/aianalyst/incidentevents"
