@@ -1,1042 +1,1074 @@
 {
   "actions": [
-    {
-      "action": "test connectivity",
-      "description": "Validate the asset configuration for connectivity using the supplied configuration",
-      "identifier": "test_connectivity",
-      "output": [],
-      "parameters": {},
-      "read_only": true,
-      "type": "test",
-      "verbose": "",
-      "versions": "EQ(*)"
-    },
-    {
-      "action": "get device tags",
-      "description": "Receive all of the tags that are currently applied to a device",
-      "identifier": "get_device_tags",
-      "output": [
-        {
-          "column_name": "Tag Name",
-          "column_order": 0,
-          "contains": [
-            "darktrace tag"
-          ],
-          "data_path": "action_result.data.*.name",
-          "data_type": "string",
-          "example_values": [
-            "Admin"
-          ]
-        },
-        {
-          "data_path": "action_result.summary",
-          "data_type": "string"
-        },
-        {
-          "data_path": "action_result.status",
-          "data_type": "string"
-        },
-        {
-          "data_path": "action_result.message",
-          "data_type": "string"
-        },
-        {
-          "contains": [
-            "darktrace device id"
-          ],
-          "data_path": "action_result.parameter.device_id",
-          "data_type": "numeric",
-          "example_values": [
-            1234
-          ]
-        }
-      ],
-      "parameters": {
-        "device_id": {
-          "contains": [
-            "darktrace device id"
-          ],
-          "data_type": "numeric",
-          "description": "See artifact details to get the device_ID",
-          "primary": true,
-          "required": true
-        }
+      {
+          "action": "test connectivity",
+          "description": "Validate the asset configuration for connectivity using the supplied configuration",
+          "identifier": "test_connectivity",
+          "output": [],
+          "parameters": {},
+          "read_only": true,
+          "type": "test",
+          "versions": "EQ(*)"
       },
-      "read_only": true,
-      "render": {
-        "type": "table"
+      {
+          "action": "get device tags",
+          "description": "Receive all of the tags that are currently applied to a device",
+          "identifier": "get_device_tags",
+          "output": [
+              {
+                  "column_name": "Tag Name",
+                  "column_order": 0,
+                  "contains": [
+                      "darktrace tag"
+                  ],
+                  "data_path": "action_result.data.*.name",
+                  "data_type": "string",
+                  "example_values": [
+                      "Admin"
+                  ]
+              },
+              {
+                  "data_path": "action_result.summary",
+                  "data_type": "string"
+              },
+              {
+                  "data_path": "action_result.status",
+                  "data_type": "string",
+                  "example_values": [
+                      "success",
+                      "failed"
+                  ]
+              },
+              {
+                  "data_path": "action_result.message",
+                  "data_type": "string"
+              },
+              {
+                  "contains": [
+                      "darktrace device id"
+                  ],
+                  "data_path": "action_result.parameter.device_id",
+                  "data_type": "numeric",
+                  "example_values": [
+                      1234
+                  ]
+              }
+          ],
+          "parameters": {
+              "device_id": {
+                  "contains": [
+                      "darktrace device id"
+                  ],
+                  "data_type": "numeric",
+                  "description": "See artifact details to get the device_ID",
+                  "primary": true,
+                  "required": true
+              }
+          },
+          "read_only": true,
+          "render": {
+              "type": "table"
+          },
+          "type": "investigate",
+          "versions": "EQ(*)"
       },
-      "type": "investigate",
-      "versions": "EQ(*)"
-    },
-    {
-      "action": "get tagged devices",
-      "description": "Receive all of the devices that currently have a given tag",
-      "identifier": "get_tagged_devices",
-      "output": [
-        {
-          "data_path": "action_result.data.*.entityValue",
-          "data_type": "string"
-        },
-        {
-          "column_name": "Device ID",
-          "column_order": 0,
-          "contains": [
-            "darktrace device id"
+      {
+          "action": "get tagged devices",
+          "description": "Receive all of the devices that currently have a given tag",
+          "identifier": "get_tagged_devices",
+          "output": [
+              {
+                  "data_path": "action_result.data.*.entityValue",
+                  "data_type": "string"
+              },
+              {
+                  "column_name": "Device ID",
+                  "column_order": 0,
+                  "contains": [
+                      "darktrace device id"
+                  ],
+                  "data_path": "action_result.summary.*.did",
+                  "data_type": "string",
+                  "example_values": [
+                      1234
+                  ]
+              },
+              {
+                  "column_name": "IP",
+                  "column_order": 1,
+                  "contains": [
+                      "ip"
+                  ],
+                  "data_path": "action_result.summary.*.ip",
+                  "data_type": "string",
+                  "example_values": [
+                      "1.2.3.4"
+                  ]
+              },
+              {
+                  "column_name": "Hostname",
+                  "column_order": 2,
+                  "contains": [
+                      "host name",
+                      "darktrace saas credential"
+                  ],
+                  "data_path": "action_result.summary.*.hostname",
+                  "data_type": "string"
+              },
+              {
+                  "column_name": "MAC Address",
+                  "column_order": 3,
+                  "contains": [
+                      "mac address"
+                  ],
+                  "data_path": "action_result.summary.*.mac",
+                  "data_type": "string",
+                  "example_values": [
+                      "AA:BB:CC:DD:EE:FF"
+                  ]
+              },
+              {
+                  "column_name": "Label",
+                  "column_order": 4,
+                  "data_path": "action_result.summary.*.label",
+                  "data_type": "string"
+              },
+              {
+                  "data_path": "action_result.data",
+                  "data_type": "string"
+              },
+              {
+                  "data_path": "action_result.status",
+                  "data_type": "string",
+                  "example_values": [
+                      "success",
+                      "failed"
+                  ]
+              },
+              {
+                  "data_path": "action_result.message",
+                  "data_type": "string"
+              },
+              {
+                  "contains": [
+                      "darktrace tag"
+                  ],
+                  "data_path": "action_result.parameter.tag",
+                  "data_type": "string",
+                  "example_values": [
+                      "Admin"
+                  ]
+              }
           ],
-          "data_path": "action_result.summary.*.did",
-          "data_type": "string",
-          "example_values": [
-            1234
-          ]
-        },
-        {
-          "column_name": "IP",
-          "column_order": 1,
-          "contains": [
-            "ip"
-          ],
-          "data_path": "action_result.summary.*.ip",
-          "data_type": "string",
-          "example_values": [
-            "1.2.3.4"
-          ]
-        },
-        {
-          "column_name": "Hostname",
-          "column_order": 2,
-          "contains": [
-            "host name",
-            "darktrace saas credential"
-          ],
-          "data_path": "action_result.summary.*.hostname",
-          "data_type": "string"
-        },
-        {
-          "column_name": "MAC Address",
-          "column_order": 3,
-          "contains": [
-            "mac address"
-          ],
-          "data_path": "action_result.summary.*.mac",
-          "data_type": "string",
-          "example_values": [
-            "AA:BB:CC:DD:EE:FF"
-          ]
-        },
-        {
-          "column_name": "Label",
-          "column_order": 4,
-          "data_path": "action_result.summary.*.label",
-          "data_type": "string"
-        },
-        {
-          "data_path": "action_result.data",
-          "data_type": "string"
-        },
-        {
-          "data_path": "action_result.status",
-          "data_type": "string"
-        },
-        {
-          "data_path": "action_result.message",
-          "data_type": "string"
-        },
-        {
-          "contains": [
-            "darktrace tag"
-          ],
-          "data_path": "action_result.parameter.tag",
-          "data_type": "string",
-          "example_values": [
-            "Admin"
-          ]
-        }
-      ],
-      "parameters": {
-        "tag": {
-          "contains": [
-            "darktrace tag"
-          ],
-          "data_type": "string",
-          "description": "The name of an existing tag",
-          "primary": true,
-          "required": true
-        }
+          "parameters": {
+              "tag": {
+                  "contains": [
+                      "darktrace tag"
+                  ],
+                  "data_type": "string",
+                  "description": "The name of an existing tag",
+                  "primary": true,
+                  "required": true
+              }
+          },
+          "read_only": true,
+          "render": {
+              "type": "table"
+          },
+          "type": "investigate",
+          "versions": "EQ(*)"
       },
-      "read_only": true,
-      "render": {
-        "type": "table"
+      {
+          "action": "get breach comments",
+          "description": "Receive all comments made on a model breach",
+          "identifier": "get_breach_comments",
+          "output": [
+              {
+                  "column_name": "Username",
+                  "column_order": 0,
+                  "data_path": "action_result.summary.*.username",
+                  "data_type": "string"
+              },
+              {
+                  "column_name": "Comment(s)",
+                  "column_order": 1,
+                  "data_path": "action_result.summary.*.comment",
+                  "data_type": "string"
+              },
+              {
+                  "column_name": "Time",
+                  "column_order": 2,
+                  "data_path": "action_result.summary.*.time",
+                  "data_type": "string"
+              },
+              {
+                  "data_path": "action_result.data",
+                  "data_type": "string"
+              },
+              {
+                  "data_path": "action_result.status",
+                  "data_type": "string",
+                  "example_values": [
+                      "success",
+                      "failed"
+                  ]
+              },
+              {
+                  "data_path": "action_result.message",
+                  "data_type": "string"
+              },
+              {
+                  "contains": [
+                      "darktrace model breach id"
+                  ],
+                  "data_path": "action_result.parameter.model_breach_id",
+                  "data_type": "numeric",
+                  "example_values": [
+                      12345
+                  ]
+              }
+          ],
+          "parameters": {
+              "model_breach_id": {
+                  "contains": [
+                      "darktrace model breach id"
+                  ],
+                  "data_type": "numeric",
+                  "description": "See artifact details to get the model_breach_id",
+                  "primary": true,
+                  "required": true
+              }
+          },
+          "read_only": true,
+          "render": {
+              "type": "table"
+          },
+          "type": "investigate",
+          "versions": "EQ(*)"
       },
-      "type": "investigate",
-      "versions": "EQ(*)"
-    },
-    {
-      "action": "get breach comments",
-      "description": "Receive all comments made on a model breach",
-      "identifier": "get_breach_comments",
-      "output": [
-        {
-          "column_name": "Username",
-          "column_order": 0,
-          "data_path": "action_result.summary.*.username",
-          "data_type": "string"
-        },
-        {
-          "column_name": "Comment(s)",
-          "column_order": 1,
-          "data_path": "action_result.summary.*.comment",
-          "data_type": "string"
-        },
-        {
-          "column_name": "Time",
-          "column_order": 2,
-          "data_path": "action_result.summary.*.time",
-          "data_type": "string"
-        },
-        {
-          "data_path": "action_result.data",
-          "data_type": "string"
-        },
-        {
-          "data_path": "action_result.status",
-          "data_type": "string"
-        },
-        {
-          "data_path": "action_result.message",
-          "data_type": "string"
-        },
-        {
-          "contains": [
-            "darktrace model breach id"
+      {
+          "action": "on poll",
+          "description": "Ingests Darktrace model breaches and Cyber AI Analyst investigations",
+          "identifier": "on_poll",
+          "output": [
+              {
+                  "data_path": "action_result.summary",
+                  "data_type": "string"
+              },
+              {
+                  "data_path": "action_result.status",
+                  "data_type": "string",
+                  "example_values": [
+                      "success",
+                      "failed"
+                  ]
+              },
+              {
+                  "data_path": "action_result.message",
+                  "data_type": "string"
+              },
+              {
+                  "data_path": "action_result.status",
+                  "data_type": "string",
+                  "example_values": [
+                      "success",
+                      "failed"
+                  ]
+              },
+              {
+                  "data_path": "action_result.data",
+                  "data_type": "string"
+              },
+              {
+                  "data_path": "action_result.parameter.container_id",
+                  "data_type": "string"
+              },
+              {
+                  "data_path": "action_result.parameter.start_time",
+                  "data_type": "numeric"
+              },
+              {
+                  "data_path": "action_result.parameter.end_time",
+                  "data_type": "numeric"
+              },
+              {
+                  "data_path": "action_result.parameter.container_count",
+                  "data_type": "numeric"
+              },
+              {
+                  "data_path": "action_result.parameter.artifact_count",
+                  "data_type": "numeric"
+              }
           ],
-          "data_path": "action_result.parameter.model_breach_id",
-          "data_type": "numeric",
-          "example_values": [
-            12345
-          ]
-        }
-      ],
-      "parameters": {
-        "model_breach_id": {
-          "contains": [
-            "darktrace model breach id"
-          ],
-          "data_type": "numeric",
-          "description": "See artifact details to get the model_breach_id",
-          "primary": true,
-          "required": true
-        }
+          "parameters": {
+              "artifact_count": {
+                  "data_type": "numeric",
+                  "description": "Maximum number of artifact records to query for",
+                  "order": 4
+              },
+              "container_count": {
+                  "data_type": "numeric",
+                  "description": "Maximum number of container records to query for",
+                  "order": 3
+              },
+              "container_id": {
+                  "allow_list": true,
+                  "data_type": "string",
+                  "description": "Container IDs to limit the ingestion to",
+                  "order": 0
+              },
+              "end_time": {
+                  "data_type": "numeric",
+                  "description": "End of the time range, in epoch time (milliseconds)",
+                  "order": 2
+              },
+              "start_time": {
+                  "data_type": "numeric",
+                  "description": "Start of the time range, in epoch time (milliseconds)",
+                  "order": 1
+              }
+          },
+          "read_only": true,
+          "render": {
+              "type": "table"
+          },
+          "type": "ingest",
+          "versions": "EQ(*)"
       },
-      "read_only": true,
-      "render": {
-        "type": "table"
+      {
+          "action": "get device description",
+          "description": "Receive device description for the specified device",
+          "identifier": "get_device_description",
+          "output": [
+              {
+                  "column_name": "Device ID",
+                  "column_order": 0,
+                  "contains": [
+                      "darktrace device id"
+                  ],
+                  "data_path": "action_result.data.*.devices.did",
+                  "data_type": "numeric",
+                  "example_values": [
+                      1234
+                  ]
+              },
+              {
+                  "column_name": "Device IP",
+                  "column_order": 1,
+                  "contains": [
+                      "ip"
+                  ],
+                  "data_path": "action_result.data.*.devices.ip",
+                  "data_type": "string",
+                  "example_values": [
+                      "1.2.3.4"
+                  ]
+              },
+              {
+                  "column_name": "Hostname",
+                  "column_order": 2,
+                  "contains": [
+                      "host name",
+                      "darktrace saas credential"
+                  ],
+                  "data_path": "action_result.data.*.devices.hostname",
+                  "data_type": "string"
+              },
+              {
+                  "column_name": "MAC Address",
+                  "column_order": 3,
+                  "contains": [
+                      "mac address"
+                  ],
+                  "data_path": "action_result.data.*.devices.macaddress",
+                  "data_type": "string",
+                  "example_values": [
+                      "AA:BB:CC:DD:EE:FF"
+                  ]
+              },
+              {
+                  "column_name": "Device Type",
+                  "column_order": 4,
+                  "data_path": "action_result.data.*.devices.typename",
+                  "data_type": "string",
+                  "example_values": [
+                      "Desktop"
+                  ]
+              },
+              {
+                  "column_name": "Device Label",
+                  "column_order": 5,
+                  "data_path": "action_result.data.*.devices.devicelabel",
+                  "data_type": "string"
+              },
+              {
+                  "data_path": "action_result.summary.*.name",
+                  "data_type": "string"
+              },
+              {
+                  "data_path": "action_result.summary.*.score",
+                  "data_type": "string"
+              },
+              {
+                  "data_path": "action_result.summary.*.acknowledged",
+                  "data_type": "string"
+              },
+              {
+                  "data_path": "action_result.summary.*.time",
+                  "data_type": "numeric"
+              },
+              {
+                  "data_path": "action_result.status",
+                  "data_type": "string",
+                  "example_values": [
+                      "success",
+                      "failed"
+                  ]
+              },
+              {
+                  "data_path": "action_result.message",
+                  "data_type": "string"
+              },
+              {
+                  "contains": [
+                      "darktrace device id"
+                  ],
+                  "data_path": "action_result.parameter.device_id",
+                  "data_type": "numeric",
+                  "example_values": [
+                      1234
+                  ]
+              }
+          ],
+          "parameters": {
+              "device_id": {
+                  "contains": [
+                      "darktrace device id"
+                  ],
+                  "data_type": "numeric",
+                  "description": "See artifact details to get the device_id",
+                  "primary": true,
+                  "required": true
+              }
+          },
+          "read_only": true,
+          "render": {
+              "type": "table"
+          },
+          "type": "investigate",
+          "versions": "EQ(*)"
       },
-      "type": "investigate",
-      "versions": "EQ(*)"
-    },
-    {
-      "action": "on poll",
-      "description": "Ingests Darktrace model breaches and Cyber AI Analyst investigations",
-      "identifier": "on_poll",
-      "output": [
-        {
-          "data_path": "action_result.summary",
-          "data_type": "string"
-        },
-        {
-          "data_path": "action_result.status",
-          "data_type": "string"
-        },
-        {
-          "data_path": "action_result.message",
-          "data_type": "string"
-        },
-        {
-          "data_path": "action_result.status",
-          "data_type": "string"
-        },
-        {
-          "data_path": "action_result.data",
-          "data_type": "string"
-        },
-        {
-          "data_path": "action_result.parameter.container_id",
-          "data_type": "string"
-        },
-        {
-          "data_path": "action_result.parameter.start_time",
-          "data_type": "numeric"
-        },
-        {
-          "data_path": "action_result.parameter.end_time",
-          "data_type": "numeric"
-        },
-        {
-          "data_path": "action_result.parameter.container_count",
-          "data_type": "numeric"
-        },
-        {
-          "data_path": "action_result.parameter.artifact_count",
-          "data_type": "numeric"
-        }
-      ],
-      "parameters": {
-        "artifact_count": {
-          "data_type": "numeric",
-          "description": "Maximum number of artifact records to query for",
-          "order": 4
-        },
-        "container_count": {
-          "data_type": "numeric",
-          "description": "Maximum number of container records to query for",
-          "order": 3
-        },
-        "container_id": {
-          "allow_list": true,
-          "data_type": "string",
-          "description": "Container IDs to limit the ingestion to",
-          "order": 0
-        },
-        "end_time": {
-          "data_type": "numeric",
-          "description": "End of the time range, in epoch time (milliseconds)",
-          "order": 2
-        },
-        "start_time": {
-          "data_type": "numeric",
-          "description": "Start of the time range, in epoch time (milliseconds)",
-          "order": 1
-        }
+      {
+          "action": "get device model breaches",
+          "description": "Receive recent model breaches for the specified device",
+          "identifier": "get_device_model_breaches",
+          "output": [
+              {
+                  "column_name": "Model Name",
+                  "data_path": "action_result.data.*.model.then.name",
+                  "column_order": 0,
+                  "data_type": "string"
+              },
+              {
+                  "column_name": "Model Breach ID",
+                  "data_path": "action_result.data.*.pbid",
+                  "column_order": 0,
+                  "data_type": "string",
+                  "contains": [
+                      "darktrace model breach id"
+                  ],
+                  "example_values": [
+                      12345
+                  ]
+              },
+              {
+                  "column_name": "Score",
+                  "data_path": "action_result.data.*.score",
+                  "column_order": 1,
+                  "data_type": "string"
+              },
+              {
+                  "column_name": "Acknowledged",
+                  "data_path": "action_result.data.*.acknowledged",
+                  "column_order": 2,
+                  "data_type": "string"
+              },
+              {
+                  "column_name": "Timestamp",
+                  "data_path": "action_result.data.*.time",
+                  "column_order": 3,
+                  "data_type": "numeric"
+              },
+              {
+                  "column_name": "Severity",
+                  "data_path": "action_result.summary.*.severity",
+                  "column_order": 4,
+                  "data_type": "numeric"
+              },
+              {
+                  "column_name": "URL",
+                  "data_path": "action_result.summary.*.darktrace_url",
+                  "column_order": 4,
+                  "data_type": "numeric"
+              },
+              {
+                  "contains": [
+                      "darktrace device id"
+                  ],
+                  "data_path": "action_result.parameter.device_id",
+                  "data_type": "numeric",
+                  "example_values": [
+                      1234
+                  ]
+              }
+          ],
+          "parameters": {
+              "device_id": {
+                  "contains": [
+                      "darktrace device id"
+                  ],
+                  "data_type": "numeric",
+                  "description": "See artifact details to get the device_id",
+                  "primary": true,
+                  "required": true
+              }
+          },
+          "read_only": true,
+          "render": {
+              "type": "table"
+          },
+          "type": "investigate",
+          "versions": "EQ(*)"
       },
-      "read_only": true,
-      "render": {
-        "type": "table"
+      {
+          "action": "acknowledge breach",
+          "description": "Acknowledge a model breach",
+          "identifier": "acknowledge_breach",
+          "output": [
+              {
+                  "column_name": "Status",
+                  "column_order": 0,
+                  "data_path": "action_result.status",
+                  "data_type": "string",
+                  "example_values": [
+                      "success",
+                      "failed"
+                  ]
+              },
+              {
+                  "data_path": "action_result.message",
+                  "data_type": "string"
+              },
+              {
+                  "data_path": "summary.total_objects",
+                  "data_type": "numeric"
+              },
+              {
+                  "data_path": "summary.total_objects_successful",
+                  "data_type": "numeric"
+              },
+              {
+                  "data_path": "action_result.summary",
+                  "data_type": "string"
+              },
+              {
+                  "data_path": "action_result.data",
+                  "data_type": "string"
+              },
+              {
+                  "contains": [
+                      "darktrace model breach id"
+                  ],
+                  "data_path": "action_result.parameter.model_breach_id",
+                  "data_type": "numeric",
+                  "example_values": [
+                      12345
+                  ]
+              }
+          ],
+          "parameters": {
+              "model_breach_id": {
+                  "contains": [
+                      "darktrace model breach id"
+                  ],
+                  "data_type": "numeric",
+                  "description": "See artifact details to get the model_breach_id",
+                  "primary": true,
+                  "required": true
+              }
+          },
+          "read_only": false,
+          "render": {
+              "type": "table"
+          },
+          "type": "correct",
+          "versions": "EQ(*)"
       },
-      "type": "ingest",
-      "versions": "EQ(*)"
-    },
-    {
-      "action": "get device description",
-      "description": "Receive device description for the specified device",
-      "identifier": "get_device_description",
-      "output": [
-        {
-          "column_name": "Device ID",
-          "column_order": 0,
-          "contains": [
-            "darktrace device id"
+      {
+          "action": "unacknowledge breach",
+          "description": "Unacknowledge a model breach",
+          "identifier": "unacknowledge_breach",
+          "output": [
+              {
+                  "column_name": "Status",
+                  "column_order": 0,
+                  "data_path": "action_result.status",
+                  "data_type": "string",
+                  "example_values": [
+                      "success",
+                      "failed"
+                  ]
+              },
+              {
+                  "data_path": "action_result.message",
+                  "data_type": "string"
+              },
+              {
+                  "data_path": "summary.total_objects",
+                  "data_type": "numeric"
+              },
+              {
+                  "data_path": "summary.total_objects_successful",
+                  "data_type": "numeric"
+              },
+              {
+                  "data_path": "action_result.summary",
+                  "data_type": "string"
+              },
+              {
+                  "data_path": "action_result.data",
+                  "data_type": "string"
+              },
+              {
+                  "contains": [
+                      "darktrace model breach id"
+                  ],
+                  "data_path": "action_result.parameter.model_breach_id",
+                  "data_type": "numeric",
+                  "example_values": [
+                      12345
+                  ]
+              }
           ],
-          "data_path": "action_result.data.*.devices.did",
-          "data_type": "numeric",
-          "example_values": [
-            1234
-          ]
-        },
-        {
-          "column_name": "Device IP",
-          "column_order": 1,
-          "contains": [
-            "ip"
-          ],
-          "data_path": "action_result.data.*.devices.ip",
-          "data_type": "string",
-          "example_values": [
-            "1.2.3.4"
-          ]
-        },
-        {
-          "column_name": "Hostname",
-          "column_order": 2,
-          "contains": [
-            "host name",
-            "darktrace saas credential"
-          ],
-          "data_path": "action_result.data.*.devices.hostname",
-          "data_type": "string"
-        },
-        {
-          "column_name": "Mac Address",
-          "column_order": 3,
-          "contains": [
-            "mac address"
-          ],
-          "data_path": "action_result.data.*.devices.macaddress",
-          "data_type": "string",
-          "example_values": [
-            "AA:BB:CC:DD:EE:FF"
-          ]
-        },
-        {
-          "column_name": "Device Type",
-          "column_order": 4,
-          "data_path": "action_result.data.*.devices.typename",
-          "data_type": "string",
-          "example_values": [
-            "Desktop"
-          ]
-        },
-        {
-          "column_name": "Device Label",
-          "column_order": 5,
-          "data_path": "action_result.data.*.devices.devicelabel",
-          "data_type": "string"
-        },
-        {
-          "data_path": "action_result.summary.*.name",
-          "data_type": "string"
-        },
-        {
-          "data_path": "action_result.summary.*.score",
-          "data_type": "string"
-        },
-        {
-          "data_path": "action_result.summary.*.acknowledged",
-          "data_type": "string"
-        },
-        {
-          "data_path": "action_result.summary.*.time",
-          "data_type": "numeric"
-        },
-        {
-          "data_path": "action_result.status",
-          "data_type": "string"
-        },
-        {
-          "data_path": "action_result.message",
-          "data_type": "string"
-        },
-        {
-          "contains": [
-            "darktrace device id"
-          ],
-          "data_path": "action_result.parameter.device_id",
-          "data_type": "numeric",
-          "example_values": [
-            1234
-          ]
-        }
-      ],
-      "parameters": {
-        "device_id": {
-          "contains": [
-            "darktrace device id"
-          ],
-          "data_type": "numeric",
-          "description": "See artifact details to get the device_id",
-          "primary": true,
-          "required": true
-        }
+          "parameters": {
+              "model_breach_id": {
+                  "contains": [
+                      "darktrace model breach id"
+                  ],
+                  "data_type": "numeric",
+                  "description": "See artifact details to get the model_breach_id",
+                  "primary": true,
+                  "required": true
+              }
+          },
+          "read_only": false,
+          "render": {
+              "type": "table"
+          },
+          "type": "correct",
+          "versions": "EQ(*)"
       },
-      "read_only": true,
-      "render": {
-        "type": "table"
+      {
+          "action": "post comment",
+          "description": "Post a comment to a model breach",
+          "identifier": "post_comment",
+          "output": [
+              {
+                  "column_name": "Model Breach ID",
+                  "column_order": 0,
+                  "contains": [
+                      "darktrace model breach id"
+                  ],
+                  "data_path": "action_result.parameter.model_breach_id",
+                  "data_type": "numeric",
+                  "example_values": [
+                      12345
+                  ]
+              },
+              {
+                  "column_name": "Comment",
+                  "column_order": 1,
+                  "data_path": "action_result.parameter.message",
+                  "data_type": "string"
+              },
+              {
+                  "column_name": "Status",
+                  "column_order": 2,
+                  "data_path": "action_result.status",
+                  "data_type": "string",
+                  "example_values": [
+                      "success",
+                      "failed"
+                  ]
+              },
+              {
+                  "data_path": "action_result.message",
+                  "data_type": "string"
+              },
+              {
+                  "data_path": "summary.total_objects",
+                  "data_type": "numeric"
+              },
+              {
+                  "data_path": "summary.total_objects_successful",
+                  "data_type": "numeric"
+              },
+              {
+                  "data_path": "action_result.summary",
+                  "data_type": "string"
+              },
+              {
+                  "data_path": "action_result.data",
+                  "data_type": "string"
+              }
+          ],
+          "parameters": {
+              "message": {
+                  "data_type": "string",
+                  "description": "Comment to post",
+                  "order": 1,
+                  "required": true
+              },
+              "model_breach_id": {
+                  "contains": [
+                      "darktrace model breach id"
+                  ],
+                  "data_type": "numeric",
+                  "description": "See artifact details to get the model_breach_id",
+                  "order": 0,
+                  "primary": true,
+                  "required": true
+              }
+          },
+          "read_only": false,
+          "render": {
+              "type": "table"
+          },
+          "type": "correct",
+          "versions": "EQ(*)"
       },
-      "type": "investigate",
-      "versions": "EQ(*)"
-    },
-    {
-      "action": "get device model breaches",
-      "description": "Receive recent model breaches for the specified device",
-      "identifier": "get_device_model_breaches",
-      "output": [
-        {
-          "column_name": "Model Name",
-          "data_path": "action_result.data.*.model.then.name",
-          "column_order": 0,
-          "data_type": "string"
-        },        
-        {
-          "column_name": "Model Breach ID",
-          "data_path": "action_result.data.*.pbid",
-          "column_order": 0,
-          "data_type": "string",
-          "contains": [
-            "darktrace model breach id"
+      {
+          "action": "post tag",
+          "description": "Post a tag to a device",
+          "identifier": "post_tag",
+          "output": [
+              {
+                  "column_name": "Tag Added",
+                  "column_order": 0,
+                  "contains": [
+                      "darktrace tag"
+                  ],
+                  "data_path": "action_result.parameter.tag",
+                  "data_type": "string",
+                  "example_values": [
+                      "Admin"
+                  ]
+              },
+              {
+                  "column_name": "Status",
+                  "column_order": 1,
+                  "data_path": "action_result.status",
+                  "data_type": "string",
+                  "example_values": [
+                      "success",
+                      "failed"
+                  ]
+              },
+              {
+                  "data_path": "action_result.message",
+                  "data_type": "string"
+              },
+              {
+                  "data_path": "summary.total_objects",
+                  "data_type": "numeric"
+              },
+              {
+                  "data_path": "summary.total_objects_successful",
+                  "data_type": "numeric"
+              },
+              {
+                  "data_path": "action_result.summary",
+                  "data_type": "string"
+              },
+              {
+                  "data_path": "action_result.data",
+                  "data_type": "string"
+              },
+              {
+                  "contains": [
+                      "darktrace device id"
+                  ],
+                  "data_path": "action_result.parameter.device_id",
+                  "data_type": "numeric",
+                  "example_values": [
+                      1234
+                  ]
+              },
+              {
+                  "data_path": "action_result.parameter.duration",
+                  "data_type": "numeric"
+              }
           ],
-          "example_values": [
-            12345
-          ]
-        },
-        {
-          "column_name": "Score",
-          "data_path": "action_result.data.*.score",
-          "column_order": 1,
-          "data_type": "string"
-        },
-        {
-          "column_name": "Acknowledged",
-          "data_path": "action_result.data.*.acknowledged",
-          "column_order": 2,
-          "data_type": "string"
-        },
-        {
-          "column_name": "Timestamp",
-          "data_path": "action_result.data.*.time",
-          "column_order": 3,
-          "data_type": "numeric"
-        },
-        {
-          "column_name": "Severity",
-          "data_path": "action_result.summary.*.severity",
-          "column_order": 4,
-          "data_type": "numeric"
-        },
-        {
-          "column_name": "URL",
-          "data_path": "action_result.summary.*.darktrace_url",
-          "column_order": 4,
-          "data_type": "numeric"
-        },
-        {
-          "contains": [
-            "darktrace device id"
-          ],
-          "data_path": "action_result.parameter.device_id",
-          "data_type": "numeric",
-          "example_values": [
-            1234
-          ]
-        }
-      ],
-      "parameters": {
-        "device_id": {
-          "contains": [
-            "darktrace device id"
-          ],
-          "data_type": "numeric",
-          "description": "See artifact details to get the device_id",
-          "primary": true,
-          "required": true
-        }
+          "parameters": {
+              "device_id": {
+                  "contains": [
+                      "darktrace device id"
+                  ],
+                  "data_type": "numeric",
+                  "description": "See artifact details to get the device_id",
+                  "order": 0,
+                  "primary": true,
+                  "required": true
+              },
+              "duration": {
+                  "data_type": "numeric",
+                  "description": "How long this tag be applied for (seconds). Ex: enter 3600 for 1 hour. Leave this entry empty if you do not want it to expire",
+                  "order": 2
+              },
+              "tag": {
+                  "contains": [
+                      "darktrace tag"
+                  ],
+                  "data_type": "string",
+                  "description": "Choose a tag to apply to the device",
+                  "order": 1,
+                  "required": true,
+                  "value_list": [
+                      "Admin",
+                      "Manual Antigena - Block Outgoing",
+                      "Manual Antigena - POL",
+                      "Manual Antigena - Quarantine",
+                      "Security Device"
+                  ],
+                  "primary": true
+              }
+          },
+          "read_only": false,
+          "render": {
+              "type": "table"
+          },
+          "type": "correct",
+          "versions": "EQ(*)"
       },
-      "read_only": true,
-      "render": {
-        "type": "table"
-      },
-      "type": "investigate",
-      "versions": "EQ(*)"
-    },
-    {
-      "action": "acknowledge breach",
-      "description": "Acknowledge a model breach",
-      "identifier": "acknowledge_breach",
-      "output": [
-        {
-          "column_name": "status",
-          "column_order": 0,
-          "data_path": "action_result.status",
-          "data_type": "string"
-        },
-        {
-          "data_path": "action_result.message",
-          "data_type": "string"
-        },
-        {
-          "data_path": "summary.total_objects",
-          "data_type": "numeric"
-        },
-        {
-          "data_path": "summary.total_objects_successful",
-          "data_type": "numeric"
-        },
-        {
-          "data_path": "action_result.summary",
-          "data_type": "string"
-        },
-        {
-          "data_path": "action_result.data",
-          "data_type": "string"
-        },
-        {
-          "contains": [
-            "darktrace model breach id"
+      {
+          "action": "get breach connections",
+          "description": "Receive connections involved in a model breach",
+          "identifier": "get_breach_connections",
+          "output": [
+              {
+                  "column_name": "Timestamp",
+                  "column_order": 0,
+                  "data_path": "action_result.data.*.time",
+                  "data_type": "string"
+              },
+              {
+                  "column_name": "Protocol",
+                  "column_order": 1,
+                  "data_path": "action_result.data.*.proto",
+                  "data_type": "string"
+              },
+              {
+                  "column_name": "Source Port",
+                  "column_order": 2,
+                  "data_path": "action_result.data.*.src_port",
+                  "data_type": "numeric"
+              },
+              {
+                  "column_name": "Source IP",
+                  "column_order": 3,
+                  "data_path": "action_result.data.*.src_ip",
+                  "data_type": "string"
+              },
+              {
+                  "column_name": "Source Hostname",
+                  "column_order": 4,
+                  "data_path": "action_result.data.*.src_hostname",
+                  "data_type": "string"
+              },
+              {
+                  "column_name": "Destination Port",
+                  "column_order": 5,
+                  "data_path": "action_result.data.*.dest_port",
+                  "data_type": "numeric"
+              },
+              {
+                  "column_name": "Destination IP",
+                  "column_order": 6,
+                  "data_path": "action_result.data.*.dest_ip",
+                  "data_type": "string"
+              },
+              {
+                  "column_name": "Destination Hostname",
+                  "column_order": 7,
+                  "data_path": "action_result.data.*.dest_hostname",
+                  "data_type": "string"
+              },
+              {
+                  "data_path": "action_result.summary",
+                  "data_type": "string"
+              },
+              {
+                  "data_path": "action_result.status",
+                  "data_type": "string",
+                  "example_values": [
+                      "success",
+                      "failed"
+                  ]
+              },
+              {
+                  "data_path": "action_result.message",
+                  "data_type": "string"
+              },
+              {
+                  "contains": [
+                      "darktrace model breach id"
+                  ],
+                  "data_path": "action_result.parameter.model_breach_id",
+                  "data_type": "numeric",
+                  "example_values": [
+                      12345
+                  ]
+              }
           ],
-          "data_path": "action_result.parameter.model_breach_id",
-          "data_type": "numeric",
-          "example_values": [
-            12345
-          ]
-        }
-      ],
-      "parameters": {
-        "model_breach_id": {
-          "contains": [
-            "darktrace model breach id"
-          ],
-          "data_type": "numeric",
-          "description": "See artifact details to get the model_breach_id",
-          "primary": true,
-          "required": true
-        }
-      },
-      "read_only": false,
-      "render": {
-        "type": "table"
-      },
-      "type": "correct",
-      "verbose": "",
-      "versions": "EQ(*)"
-    },
-    {
-      "action": "unacknowledge breach",
-      "description": "Unacknowledge a model breach",
-      "identifier": "unacknowledge_breach",
-      "output": [
-        {
-          "column_name": "status",
-          "column_order": 0,
-          "data_path": "action_result.status",
-          "data_type": "string"
-        },
-        {
-          "data_path": "action_result.message",
-          "data_type": "string"
-        },
-        {
-          "data_path": "summary.total_objects",
-          "data_type": "numeric"
-        },
-        {
-          "data_path": "summary.total_objects_successful",
-          "data_type": "numeric"
-        },
-        {
-          "data_path": "action_result.summary",
-          "data_type": "string"
-        },
-        {
-          "data_path": "action_result.data",
-          "data_type": "string"
-        },
-        {
-          "contains": [
-            "darktrace model breach id"
-          ],
-          "data_path": "action_result.parameter.model_breach_id",
-          "data_type": "numeric",
-          "example_values": [
-            12345
-          ]
-        }
-      ],
-      "parameters": {
-        "model_breach_id": {
-          "contains": [
-            "darktrace model breach id"
-          ],
-          "data_type": "numeric",
-          "description": "See artifact details to get the model_breach_id",
-          "primary": true,
-          "required": true
-        }
-      },
-      "read_only": false,
-      "render": {
-        "type": "table"
-      },
-      "type": "correct",
-      "verbose": "",
-      "versions": "EQ(*)"
-    },
-    {
-      "action": "post comment",
-      "description": "Post a comment to a model breach",
-      "identifier": "post_comment",
-      "output": [
-        {
-          "column_name": "Model Breach ID",
-          "column_order": 0,
-          "contains": [
-            "darktrace model breach id"
-          ],
-          "data_path": "action_result.parameter.model_breach_id",
-          "data_type": "numeric",
-          "example_values": [
-            12345
-          ]
-        },
-        {
-          "column_name": "Comment",
-          "column_order": 1,
-          "data_path": "action_result.parameter.message",
-          "data_type": "string"
-        },
-        {
-          "column_name": "status",
-          "column_order": 2,
-          "data_path": "action_result.status",
-          "data_type": "string"
-        },
-        {
-          "data_path": "action_result.message",
-          "data_type": "string"
-        },
-        {
-          "data_path": "summary.total_objects",
-          "data_type": "numeric"
-        },
-        {
-          "data_path": "summary.total_objects_successful",
-          "data_type": "numeric"
-        },
-        {
-          "data_path": "action_result.summary",
-          "data_type": "string"
-        },
-        {
-          "data_path": "action_result.data",
-          "data_type": "string"
-        }
-      ],
-      "parameters": {
-        "message": {
-          "data_type": "string",
-          "description": "Comment to post",
-          "order": 1,
-          "required": true
-        },
-        "model_breach_id": {
-          "contains": [
-            "darktrace model breach id"
-          ],
-          "data_type": "numeric",
-          "description": "See artifact details to get the model_breach_id",
-          "order": 0,
-          "primary": true,
-          "required": true
-        }
-      },
-      "read_only": false,
-      "render": {
-        "type": "table"
-      },
-      "type": "correct",
-      "verbose": "",
-      "versions": "EQ(*)"
-    },
-    {
-      "action": "post tag",
-      "description": "Post a tag to a device",
-      "identifier": "post_tag",
-      "output": [
-        {
-          "column_name": "Tag added",
-          "column_order": 0,
-          "contains": [
-            "darktrace tag"
-          ],
-          "data_path": "action_result.parameter.tag",
-          "data_type": "string",
-          "example_values": [
-            "Admin"
-          ]
-        },
-        {
-          "column_name": "status",
-          "column_order": 1,
-          "data_path": "action_result.status",
-          "data_type": "string"
-        },
-        {
-          "data_path": "action_result.message",
-          "data_type": "string"
-        },
-        {
-          "data_path": "summary.total_objects",
-          "data_type": "numeric"
-        },
-        {
-          "data_path": "summary.total_objects_successful",
-          "data_type": "numeric"
-        },
-        {
-          "data_path": "action_result.summary",
-          "data_type": "string"
-        },
-        {
-          "data_path": "action_result.data",
-          "data_type": "string"
-        },
-        {
-          "contains": [
-            "darktrace device id"
-          ],
-          "data_path": "action_result.parameter.device_id",
-          "data_type": "numeric",
-          "example_values": [
-            1234
-          ]
-        },
-        {
-          "data_path": "action_result.parameter.duration",
-          "data_type": "numeric"
-        }
-      ],
-      "parameters": {
-        "device_id": {
-          "contains": [
-            "darktrace device id"
-          ],
-          "data_type": "numeric",
-          "description": "See artifact details to get the device_id",
-          "order": 0,
-          "primary": true,
-          "required": true
-        },
-        "duration": {
-          "data_type": "numeric",
-          "description": "How long this tag be applied for (seconds). Ex: enter 3600 for 1 hour. Leave this entry empty if you do not want it to expire.",
-          "order": 2,
-          "required": false
-        },
-        "tag": {
-          "contains": [
-            "darktrace tag"
-          ],
-          "data_type": "string",
-          "description": "Choose a tag to apply to the device.",
-          "order": 1,
-          "required": true,
-          "value_list": [
-            "Admin",
-            "Manual Antigena - Block Outgoing",
-            "Manual Antigena - POL",
-            "Manual Antigena - Quarantine",
-            "Security Device"
-          ]
-        }
-      },
-      "read_only": false,
-      "render": {
-        "type": "table"
-      },
-      "type": "correct",
-      "verbose": "",
-      "versions": "EQ(*)"
-    },
-    {
-      "action": "get breach connections",
-      "description": "Receive connections involved in a model breach",
-      "identifier": "get_breach_connections",
-      "output": [
-        {
-          "column_name": "timestamp",
-          "column_order": 0,
-          "data_path": "action_result.data.*.time",
-          "data_type": "string"
-        },
-        {
-          "column_name": "Protocol",
-          "column_order": 1,
-          "data_path": "action_result.data.*.proto",
-          "data_type": "string"
-        },
-        {
-          "column_name": "Source Port",
-          "column_order": 2,
-          "data_path": "action_result.data.*.src_port",
-          "data_type": "numeric"
-        },
-        {
-          "column_name": "Source IP",
-          "column_order": 3,
-          "data_path": "action_result.data.*.src_ip",
-          "data_type": "string"
-        },
-        {
-          "column_name": "Source Hostname",
-          "column_order": 4,
-          "data_path": "action_result.data.*.src_hostname",
-          "data_type": "string"
-        },
-        {
-          "column_name": "Destination Port",
-          "column_order": 5,
-          "data_path": "action_result.data.*.dest_port",
-          "data_type": "numeric"
-        },
-        {
-          "column_name": "Destination IP",
-          "column_order": 6,
-          "data_path": "action_result.data.*.dest_ip",
-          "data_type": "string"
-        },
-        {
-          "column_name": "Destination Hostname",
-          "column_order": 7,
-          "data_path": "action_result.data.*.dest_hostname",
-          "data_type": "string"
-        },
-        {
-          "data_path": "action_result.summary",
-          "data_type": "string"
-        },
-        {
-          "data_path": "action_result.status",
-          "data_type": "string"
-        },
-        {
-          "data_path": "action_result.message",
-          "data_type": "string"
-        },
-        {
-          "contains": [
-            "darktrace model breach id"
-          ],
-          "data_path": "action_result.parameter.model_breach_id",
-          "data_type": "numeric",
-          "example_values": [
-            12345
-          ]
-        }
-      ],
-      "parameters": {
-        "model_breach_id": {
-          "contains": [
-            "darktrace model breach id"
-          ],
-          "data_type": "string",
-          "description": "See artifact details to get the model_breach_id",
-          "primary": true,
-          "required": true
-        }
-      },
-      "read_only": true,
-      "render": {
-        "type": "table"
-      },
-      "type": "investigate",
-      "versions": "EQ(*)"
-    }
+          "parameters": {
+              "model_breach_id": {
+                  "contains": [
+                      "darktrace model breach id"
+                  ],
+                  "data_type": "string",
+                  "description": "See artifact details to get the model_breach_id",
+                  "primary": true,
+                  "required": true
+              }
+          },
+          "read_only": true,
+          "render": {
+              "type": "table"
+          },
+          "type": "investigate",
+          "versions": "EQ(*)"
+      }
   ],
   "app_version": "1.0.2",
   "app_wizard_version": "1.0.0",
   "appid": "67c8d713-e1e2-419a-aa09-d326d011bdd6",
   "configuration": {
-    "base_url": {
-      "data_type": "string",
-      "default": "",
-      "description": "IP address of the Darktrace Master",
-      "order": 0,
-      "required": true,
-      "value_list": []
-    },
-    "poll_aia": {
-      "data_type": "boolean",
-      "default": true,
-      "description": "Ingest Cyber AI Analyst Investigations",
-      "order": 3,
-      "required": true
-    },
-    "poll_mb": {
-      "data_type": "boolean",
-      "default": true,
-      "description": "Ingest Model Breaches",
-      "order": 4,
-      "required": true
-    },
-    "private_token": {
-      "data_type": "password",
-      "description": "Darktrace API Private Token",
-      "order": 2,
-      "required": true
-    },
-    "public_token": {
-      "data_type": "string",
-      "default": "",
-      "description": "Darktrace API Public Token",
-      "order": 1,
-      "required": true,
-      "value_list": []
-    },
-    "tls_verify": {
-      "data_type": "boolean",
-      "default": true,
-      "description": "Enable TLS Certificate Verification",
-      "order": 5,
-      "required": false
-    }
+      "base_url": {
+          "data_type": "string",
+          "description": "IP address of the Darktrace Master",
+          "order": 0,
+          "required": true
+      },
+      "poll_aia": {
+          "data_type": "boolean",
+          "default": true,
+          "description": "Ingest Cyber AI Analyst Investigations",
+          "order": 3
+      },
+      "poll_mb": {
+          "data_type": "boolean",
+          "default": true,
+          "description": "Ingest Model Breaches",
+          "order": 4
+      },
+      "private_token": {
+          "data_type": "password",
+          "description": "Darktrace API Private Token",
+          "order": 2,
+          "required": true
+      },
+      "public_token": {
+          "data_type": "string",
+          "description": "Darktrace API Public Token",
+          "order": 1,
+          "required": true
+      },
+      "tls_verify": {
+          "data_type": "boolean",
+          "default": true,
+          "description": "Enable TLS Certificate Verification",
+          "order": 5
+      }
   },
   "description": "Darktrace",
   "license": "Copyright (c) Darktrace, 2021",
   "logo": "darktrace.svg",
   "logo_dark": "darktrace_dark.svg",
   "main_module": "darktrace_connector.py",
-  "min_phantom_version": "4.10.1.45070",
+  "min_phantom_version": "5.2.0",
   "name": "Darktrace",
   "package_name": "phantom_darktrace",
   "pip39_dependencies": {
-    "wheel": [
-      {
-        "input_file": "wheels/py3/beautifulsoup4-4.11.1-py3-none-any.whl",
-        "module": "beautifulsoup4"
-      },
-      {
-        "input_file": "wheels/shared/certifi-2021.10.8-py2.py3-none-any.whl",
-        "module": "certifi"
-      },
-      {
-        "input_file": "wheels/shared/chardet-4.0.0-py2.py3-none-any.whl",
-        "module": "chardet"
-      },
-      {
-        "input_file": "wheels/shared/idna-3.3-py3-none-any.whl",
-        "module": "idna"
-      },
-      {
-        "input_file": "wheels/shared/requests-2.27.1-py2.py3-none-any.whl",
-        "module": "requests"
-      },
-      {
-        "input_file": "wheels/shared/requests_toolbelt-0.9.1-py2.py3-none-any.whl",
-        "module": "requests_toolbelt"
-      },
-      {
-        "input_file": "wheels/py39/simplejson-3.17.6-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl",
-        "module": "simplejson"
-      },
-      {
-        "input_file": "wheels/shared/urllib3-1.26.9-py2.py3-none-any.whl",
-        "module": "urllib3"
-      }
-    ]
+      "wheel": [
+          {
+              "input_file": "wheels/py3/beautifulsoup4-4.11.1-py3-none-any.whl",
+              "module": "beautifulsoup4"
+          },
+          {
+              "input_file": "wheels/shared/certifi-2021.10.8-py2.py3-none-any.whl",
+              "module": "certifi"
+          },
+          {
+              "input_file": "wheels/shared/chardet-4.0.0-py2.py3-none-any.whl",
+              "module": "chardet"
+          },
+          {
+              "input_file": "wheels/shared/idna-3.3-py3-none-any.whl",
+              "module": "idna"
+          },
+          {
+              "input_file": "wheels/shared/requests-2.27.1-py2.py3-none-any.whl",
+              "module": "requests"
+          },
+          {
+              "input_file": "wheels/shared/requests_toolbelt-0.9.1-py2.py3-none-any.whl",
+              "module": "requests_toolbelt"
+          },
+          {
+              "input_file": "wheels/py39/simplejson-3.17.6-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl",
+              "module": "simplejson"
+          },
+          {
+              "input_file": "wheels/shared/urllib3-1.26.9-py2.py3-none-any.whl",
+              "module": "urllib3"
+          }
+      ]
   },
   "pip_dependencies": {
-    "wheel": [
-      {
-        "input_file": "wheels/py3/beautifulsoup4-4.11.1-py3-none-any.whl",
-        "module": "beautifulsoup4"
-      },
-      {
-        "input_file": "wheels/shared/certifi-2021.10.8-py2.py3-none-any.whl",
-        "module": "certifi"
-      },
-      {
-        "input_file": "wheels/shared/chardet-4.0.0-py2.py3-none-any.whl",
-        "module": "chardet"
-      },
-      {
-        "input_file": "wheels/shared/idna-3.3-py3-none-any.whl",
-        "module": "idna"
-      },
-      {
-        "input_file": "wheels/shared/requests-2.27.1-py2.py3-none-any.whl",
-        "module": "requests"
-      },
-      {
-        "input_file": "wheels/shared/requests_toolbelt-0.9.1-py2.py3-none-any.whl",
-        "module": "requests_toolbelt"
-      },
-      {
-        "input_file": "wheels/py36/simplejson-3.17.6-cp36-cp36m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl",
-        "module": "simplejson"
-      },
-      {
-        "input_file": "wheels/shared/urllib3-1.26.9-py2.py3-none-any.whl",
-        "module": "urllib3"
-      }
-    ]
+      "wheel": [
+          {
+              "input_file": "wheels/py3/beautifulsoup4-4.11.1-py3-none-any.whl",
+              "module": "beautifulsoup4"
+          },
+          {
+              "input_file": "wheels/shared/certifi-2021.10.8-py2.py3-none-any.whl",
+              "module": "certifi"
+          },
+          {
+              "input_file": "wheels/shared/chardet-4.0.0-py2.py3-none-any.whl",
+              "module": "chardet"
+          },
+          {
+              "input_file": "wheels/shared/idna-3.3-py3-none-any.whl",
+              "module": "idna"
+          },
+          {
+              "input_file": "wheels/shared/requests-2.27.1-py2.py3-none-any.whl",
+              "module": "requests"
+          },
+          {
+              "input_file": "wheels/shared/requests_toolbelt-0.9.1-py2.py3-none-any.whl",
+              "module": "requests_toolbelt"
+          },
+          {
+              "input_file": "wheels/py36/simplejson-3.17.6-cp36-cp36m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl",
+              "module": "simplejson"
+          },
+          {
+              "input_file": "wheels/shared/urllib3-1.26.9-py2.py3-none-any.whl",
+              "module": "urllib3"
+          }
+      ]
   },
   "product_name": "Darktrace",
   "product_vendor": "Darktrace",
