@@ -7,8 +7,8 @@ from phantom.base_connector import BaseConnector
 
 from darktrace.handlers.darktrace_connectivity_handler import ConnectivityHandler
 from darktrace.handlers.darktrace_device_handler import DeviceHandler
-from darktrace.handlers.darktrace_poll_handler import PollHandler
 from darktrace.handlers.darktrace_model_breach_handler import ModelBreachHandler
+from darktrace.handlers.darktrace_poll_handler import PollHandler
 
 
 class DarktraceConnector(BaseConnector):

@@ -2,8 +2,8 @@ from typing import Any, Dict, List
 
 import phantom.app as phantom
 
-from .darktrace_handler import DarktraceHandler
 from ..darktrace_utils import SplunkSeverity, nget
+from .darktrace_handler import DarktraceHandler
 
 
 class DeviceHandler(DarktraceHandler):

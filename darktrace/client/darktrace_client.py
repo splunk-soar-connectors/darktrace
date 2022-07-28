@@ -7,12 +7,11 @@ import hmac
 import json
 from datetime import datetime
 from typing import TYPE_CHECKING, Dict, List, Optional, Tuple, Union
+import requests
 
 if TYPE_CHECKING:
     import phantom.app as phantom  # noqa: F401
     from phantom.action_result import ActionResult  # noqa: F401
-
-import requests
 
 from ..darktrace_consts import (
     ACK_BREACH,
