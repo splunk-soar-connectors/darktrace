@@ -9,8 +9,8 @@ from datetime import datetime
 from typing import TYPE_CHECKING, Dict, List, Optional, Tuple, Union
 
 if TYPE_CHECKING:
-    import phantom.app as phantom # noqa: F401
-    from phantom.action_result import ActionResult # noqa: F401
+    import phantom.app as phantom  # noqa: F401
+    from phantom.action_result import ActionResult  # noqa: F401
 
 import requests
 
