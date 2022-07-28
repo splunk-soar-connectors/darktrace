@@ -3,12 +3,12 @@ from typing import Any, Dict, List
 
 import phantom.app as phantom
 
-from ..utils import nget
+from ..darktrace_utils import nget
 from .darktrace_handler import DarktraceHandler
 
 
 class ModelBreachHandler(DarktraceHandler):
-    def handle_post_comment(self):
+    def _handle_post_comment(self):
         """
         Handler for `post_comment` action.
 
@@ -32,7 +32,7 @@ class ModelBreachHandler(DarktraceHandler):
 
         return self.action_result.set_status(phantom.APP_SUCCESS)
 
-    def handle_acknowledge_breach(self):
+    def _handle_acknowledge_breach(self):
         """
         Handler for `acknowledge_breach` action.
 
@@ -54,7 +54,7 @@ class ModelBreachHandler(DarktraceHandler):
 
         return self.action_result.set_status(phantom.APP_SUCCESS)
 
-    def handle_unacknowledge_breach(self):
+    def _handle_unacknowledge_breach(self):
         """
         Handler for `unacknowledge_breach` action.
 
@@ -76,7 +76,7 @@ class ModelBreachHandler(DarktraceHandler):
 
         return self.action_result.set_status(phantom.APP_SUCCESS)
 
-    def handle_get_breach_comments(self) -> bool:
+    def _handle_get_breach_comments(self) -> bool:
         """
         Handler for `get_breach_comments` action.
 
@@ -100,7 +100,7 @@ class ModelBreachHandler(DarktraceHandler):
 
         return self.action_result.set_status(phantom.APP_SUCCESS)
 
-    def handle_get_breach_connections(self) -> bool:
+    def _handle_get_breach_connections(self) -> bool:
         """
         Handler for `get_breach_connections` action.
 

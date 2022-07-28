@@ -436,7 +436,7 @@
       "versions": "EQ(*)"
     },
     {
-      "action": "get device model breaches",
+      "action": "get device modelbreaches",
       "description": "Receive recent model breaches for the specified device",
       "identifier": "get_device_model_breaches",
       "output": [
@@ -943,12 +943,10 @@
       "required": true
     },
     "public_token": {
-      "data_type": "string",
-      "default": "",
+      "data_type": "password",
       "description": "Darktrace API Public Token",
       "order": 1,
-      "required": true,
-      "value_list": []
+      "required": true
     },
     "tls_verify": {
       "data_type": "boolean",
@@ -963,7 +961,7 @@
   "logo": "darktrace.svg",
   "logo_dark": "darktrace_dark.svg",
   "main_module": "darktrace_connector.py",
-  "min_phantom_version": "4.10.1.45070",
+  "min_phantom_version": "5.2.0",
   "name": "Darktrace",
   "package_name": "phantom_darktrace",
   "pip39_dependencies": {

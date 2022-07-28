@@ -8,11 +8,13 @@ import json
 from datetime import datetime
 from typing import TYPE_CHECKING, Dict, List, Optional, Tuple, Union
 
-import phantom.app as phantom
-import requests
-from phantom.action_result import ActionResult
+if TYPE_CHECKING:
+    import phantom.app as phantom
+    from phantom.action_result import ActionResult
 
-from ..consts import (
+import requests
+
+from ..darktrace_consts import (
     ACK_BREACH,
     AI_ANALYST_ENDPOINT,
     COMMENT_BREACH,
@@ -25,8 +27,8 @@ from ..consts import (
     TEST_CONNECTIVITY_ENDPOINT,
     UNACK_BREACH,
 )
-from ..utils import now, stringify_data
-from .resp_processer import process_response
+from ..darktrace_utils import now, stringify_data
+from .darktrace_resp_processer import process_response
 
 if TYPE_CHECKING:
     from darktrace_connector import DarktraceConnector

@@ -5,7 +5,10 @@ import phantom.app as phantom
 import requests
 from phantom.base_connector import BaseConnector
 
-from darktrace.handlers import ConnectivityHandler, DeviceHandler, ModelBreachHandler, PollHandler
+from darktrace.handlers.darktrace_connectivity_handler import ConnectivityHandler
+from darktrace.handlers.darktrace_device_handler import DeviceHandler
+from darktrace.handlers.darktrace_poll_handler import PollHandler
+from darktrace.handlers.darktrace_model_breach_handler import ModelBreachHandler
 
 
 class DarktraceConnector(BaseConnector):
@@ -22,33 +25,33 @@ class DarktraceConnector(BaseConnector):
 
         # Special Purpose Actions
         if action_id == "test_connectivity":
-            returned_value = ConnectivityHandler(self, param).handle_test_connectivity()
+            returned_value = ConnectivityHandler(self, param)._handle_test_connectivity()
         elif action_id == "on_poll":
-            returned_value = PollHandler(self, param).handle_on_poll()
+            returned_value = PollHandler(self, param)._handle_on_poll()
 
         # Device Actions
         elif action_id == "get_device_description":
-            returned_value = DeviceHandler(self, param).handle_get_device_description()
+            returned_value = DeviceHandler(self, param)._handle_get_device_description()
         elif action_id == "get_device_model_breaches":
-            returned_value = DeviceHandler(self, param).handle_get_device_model_breaches()
+            returned_value = DeviceHandler(self, param)._handle_get_device_model_breaches()
         elif action_id == "get_device_tags":
-            returned_value = DeviceHandler(self, param).handle_get_tags_for_device()
+            returned_value = DeviceHandler(self, param)._handle_get_tags_for_device()
         elif action_id == "get_tagged_devices":
-            returned_value = DeviceHandler(self, param).handle_get_tagged_devices()
+            returned_value = DeviceHandler(self, param)._handle_get_tagged_devices()
         elif action_id == "post_tag":
-            returned_value = DeviceHandler(self, param).handle_post_tag_to_device()
+            returned_value = DeviceHandler(self, param)._handle_post_tag_to_device()
 
         # Model Breach Actions
         elif action_id == "post_comment":
-            returned_value = ModelBreachHandler(self, param).handle_post_comment()
+            returned_value = ModelBreachHandler(self, param)._handle_post_comment()
         elif action_id == "acknowledge_breach":
-            returned_value = ModelBreachHandler(self, param).handle_acknowledge_breach()
+            returned_value = ModelBreachHandler(self, param)._handle_acknowledge_breach()
         elif action_id == "unacknowledge_breach":
-            returned_value = ModelBreachHandler(self, param).handle_unacknowledge_breach()
+            returned_value = ModelBreachHandler(self, param)._handle_unacknowledge_breach()
         elif action_id == "get_breach_comments":
-            returned_value = ModelBreachHandler(self, param).handle_get_breach_comments()
+            returned_value = ModelBreachHandler(self, param)._handle_get_breach_comments()
         elif action_id == "get_breach_connections":
-            returned_value = ModelBreachHandler(self, param).handle_get_breach_connections()
+            returned_value = ModelBreachHandler(self, param)._handle_get_breach_connections()
 
         self.debug_print("Action result: ", returned_value)
 
