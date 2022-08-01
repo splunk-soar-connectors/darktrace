@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta
 from typing import Any, Dict
 
-from ..utils import SplunkSeverity, description_cleanup, get_device_name, nget
+from ..darktrace_utils import SplunkSeverity, description_cleanup, get_device_name, nget
 
 
 @dataclass

@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING, Any, List, Optional, Tuple
 
 from phantom.action_result import ActionResult
 
-from ..client import DarktraceClient
+from ..client.darktrace_client import DarktraceClient
 
 if TYPE_CHECKING:
     from darktrace_connector import DarktraceConnector

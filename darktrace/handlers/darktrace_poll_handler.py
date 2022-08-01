@@ -4,10 +4,10 @@ from typing import Any, Dict, List, Optional, Set, Tuple
 
 import phantom.app as phantom
 
-from darktrace.client.ai_analyst_objects import AIAnalystArtifact, AIAnalystContainer
-from darktrace.client.model_breach_objects import ModelBreachArtifact, ModelBreachContainer
+from darktrace.client.darktrace_ai_analyst_objects import AIAnalystArtifact, AIAnalystContainer
+from darktrace.client.darktrace_model_breach_objects import ModelBreachArtifact, ModelBreachContainer
 
-from ..utils import now
+from ..darktrace_utils import now
 from .darktrace_handler import DarktraceHandler
 
 
@@ -18,7 +18,7 @@ class PollHandler(DarktraceHandler):
     Polls for AI Analyst incidents and Model Breaches
     """
 
-    def handle_on_poll(self) -> bool:
+    def _handle_on_poll(self) -> bool:
         """Poll for model breaches and AI Analyst incidents in a time range"""
 
         self.save_progress("Polling Darktrace")

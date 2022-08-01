@@ -2,11 +2,12 @@ from typing import Any, Dict, List
 
 import phantom.app as phantom
 
+from ..darktrace_utils import SplunkSeverity, nget
 from .darktrace_handler import DarktraceHandler
-from ..utils import SplunkSeverity, nget
+
 
 class DeviceHandler(DarktraceHandler):
-    def handle_get_device_description(self):
+    def _handle_get_device_description(self):
         """
         Handler for `get_device_description` action.
 
@@ -27,7 +28,7 @@ class DeviceHandler(DarktraceHandler):
 
         return self.action_result.set_status(phantom.APP_SUCCESS)
 
-    def handle_get_device_model_breaches(self):
+    def _handle_get_device_model_breaches(self):
         """
         Handler for `get_device_model_breaches` action.
 
@@ -52,7 +53,7 @@ class DeviceHandler(DarktraceHandler):
 
         return self.action_result.set_status(phantom.APP_SUCCESS)
 
-    def handle_get_tags_for_device(self):
+    def _handle_get_tags_for_device(self):
         """
         Handler for `get_tags_for_device` action.
 
@@ -72,7 +73,7 @@ class DeviceHandler(DarktraceHandler):
 
         return self.action_result.set_status(phantom.APP_SUCCESS)
 
-    def handle_get_tagged_devices(self) -> bool:
+    def _handle_get_tagged_devices(self) -> bool:
         """
         Handler for `get_tagged_devices` action.
 
@@ -97,7 +98,7 @@ class DeviceHandler(DarktraceHandler):
 
         return self.action_result.set_status(phantom.APP_SUCCESS)
 
-    def handle_post_tag_to_device(self) -> bool:
+    def _handle_post_tag_to_device(self) -> bool:
         """
         Handler for `post_tag` action.
 
@@ -145,7 +146,7 @@ class DeviceHandler(DarktraceHandler):
         """
         Adds model breach url and Severity to every model breach action result summary
         """
-        
+
         model_breach_additional_info = {}
 
         for i, model_breach in enumerate(model_breaches):

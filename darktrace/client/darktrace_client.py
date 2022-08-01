@@ -8,25 +8,21 @@ import json
 from datetime import datetime
 from typing import TYPE_CHECKING, Dict, List, Optional, Tuple, Union
 
-import phantom.app as phantom
 import requests
-from phantom.action_result import ActionResult
 
-from ..consts import (
-    ACK_BREACH,
-    AI_ANALYST_ENDPOINT,
-    COMMENT_BREACH,
-    DEVICE_SUMMARY_ENDPOINT,
-    DEVICES_ENDPOINT,
-    MODEL_BREACH_COMMENT_ENDPOINT,
-    MODEL_BREACH_CONNECTIONS_ENDPOINT,
-    MODEL_BREACH_ENDPOINT,
-    TAG_ENTITIES_ENDPOINT,
-    TEST_CONNECTIVITY_ENDPOINT,
-    UNACK_BREACH,
-)
-from ..utils import now, stringify_data
-from .resp_processer import process_response
+if TYPE_CHECKING:
+    import phantom.app as phantom  # noqa: F401
+    from phantom.action_result import ActionResult  # noqa: F401
+
+from ..darktrace_consts import (ACK_BREACH, AI_ANALYST_ENDPOINT,
+                                COMMENT_BREACH, DEVICE_SUMMARY_ENDPOINT,
+                                DEVICES_ENDPOINT,
+                                MODEL_BREACH_COMMENT_ENDPOINT,
+                                MODEL_BREACH_CONNECTIONS_ENDPOINT,
+                                MODEL_BREACH_ENDPOINT, TAG_ENTITIES_ENDPOINT,
+                                TEST_CONNECTIVITY_ENDPOINT, UNACK_BREACH)
+from ..darktrace_utils import now, stringify_data
+from .darktrace_resp_processer import process_response
 
 if TYPE_CHECKING:
     from darktrace_connector import DarktraceConnector

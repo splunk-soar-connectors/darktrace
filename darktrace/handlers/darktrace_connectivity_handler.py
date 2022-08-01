@@ -4,7 +4,7 @@ from .darktrace_handler import DarktraceHandler
 
 
 class ConnectivityHandler(DarktraceHandler):
-    def handle_test_connectivity(self):
+    def _handle_test_connectivity(self):
         """
         Handler for the `test_connectivity` action
         """
