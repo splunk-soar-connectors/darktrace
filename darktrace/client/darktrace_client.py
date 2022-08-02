@@ -14,12 +14,8 @@ if TYPE_CHECKING:
     import phantom.app as phantom  # noqa: F401
     from phantom.action_result import ActionResult  # noqa: F401
 
-from ..darktrace_consts import (ACK_BREACH, AI_ANALYST_ENDPOINT,
-                                COMMENT_BREACH, DEVICE_SUMMARY_ENDPOINT,
-                                DEVICES_ENDPOINT,
-                                MODEL_BREACH_COMMENT_ENDPOINT,
-                                MODEL_BREACH_CONNECTIONS_ENDPOINT,
-                                MODEL_BREACH_ENDPOINT, TAG_ENTITIES_ENDPOINT,
+from ..darktrace_consts import (ACK_BREACH, AI_ANALYST_ENDPOINT, COMMENT_BREACH, DEVICE_SUMMARY_ENDPOINT, DEVICES_ENDPOINT,
+                                MODEL_BREACH_COMMENT_ENDPOINT, MODEL_BREACH_CONNECTIONS_ENDPOINT, MODEL_BREACH_ENDPOINT, TAG_ENTITIES_ENDPOINT,
                                 TEST_CONNECTIVITY_ENDPOINT, UNACK_BREACH)
 from ..darktrace_utils import now, stringify_data
 from .darktrace_resp_processer import process_response
