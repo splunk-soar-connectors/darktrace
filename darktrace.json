@@ -488,7 +488,7 @@
         {
           "column_name": "URL",
           "data_path": "action_result.summary.*.darktrace_url",
-          "column_order": 4,
+          "column_order": 5,
           "data_type": "numeric"
         },
         {
