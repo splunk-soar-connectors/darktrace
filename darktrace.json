@@ -8,7 +8,6 @@
       "parameters": {},
       "read_only": true,
       "type": "test",
-      "verbose": "",
       "versions": "EQ(*)"
     },
     {
@@ -57,6 +56,7 @@
             "darktrace device id"
           ],
           "data_type": "numeric",
+          "order": 0,
           "description": "See artifact details to get the device_ID",
           "primary": true,
           "required": true
@@ -159,6 +159,7 @@
             "darktrace tag"
           ],
           "data_type": "string",
+          "order": 0,
           "description": "The name of an existing tag",
           "primary": true,
           "required": true
@@ -223,6 +224,7 @@
             "darktrace model breach id"
           ],
           "data_type": "numeric",
+          "order": 0,
           "description": "See artifact details to get the model_breach_id",
           "primary": true,
           "required": true
@@ -423,6 +425,7 @@
             "darktrace device id"
           ],
           "data_type": "numeric",
+          "order": 0,
           "description": "See artifact details to get the device_id",
           "primary": true,
           "required": true
@@ -505,6 +508,7 @@
             "darktrace device id"
           ],
           "data_type": "numeric",
+          "order": 0,
           "description": "See artifact details to get the device_id",
           "primary": true,
           "required": true
@@ -565,6 +569,7 @@
             "darktrace model breach id"
           ],
           "data_type": "numeric",
+          "order": 0,
           "description": "See artifact details to get the model_breach_id",
           "primary": true,
           "required": true
@@ -575,7 +580,6 @@
         "type": "table"
       },
       "type": "correct",
-      "verbose": "",
       "versions": "EQ(*)"
     },
     {
@@ -626,6 +630,7 @@
             "darktrace model breach id"
           ],
           "data_type": "numeric",
+          "order": 0,
           "description": "See artifact details to get the model_breach_id",
           "primary": true,
           "required": true
@@ -636,7 +641,6 @@
         "type": "table"
       },
       "type": "correct",
-      "verbose": "",
       "versions": "EQ(*)"
     },
     {
@@ -712,7 +716,6 @@
         "type": "table"
       },
       "type": "correct",
-      "verbose": "",
       "versions": "EQ(*)"
     },
     {
@@ -812,7 +815,6 @@
         "type": "table"
       },
       "type": "correct",
-      "verbose": "",
       "versions": "EQ(*)"
     },
     {
@@ -897,6 +899,7 @@
             "darktrace model breach id"
           ],
           "data_type": "string",
+          "order": 0,
           "description": "See artifact details to get the model_breach_id",
           "primary": true,
           "required": true
@@ -961,7 +964,7 @@
   "logo": "darktrace.svg",
   "logo_dark": "darktrace_dark.svg",
   "main_module": "darktrace_connector.py",
-  "min_phantom_version": "5.2.0",
+  "min_phantom_version": "5.3.0",
   "name": "Darktrace",
   "package_name": "phantom_darktrace",
   "pip39_dependencies": {
