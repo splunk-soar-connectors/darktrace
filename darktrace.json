@@ -48,7 +48,21 @@
           "example_values": [
             1234
           ]
-        }
+        },
+        {
+          "data_path": "summary.total_objects",
+          "data_type": "numeric",
+          "example_values": [
+              1
+          ]
+      },
+      {
+          "data_path": "summary.total_objects_successful",
+          "data_type": "numeric",
+          "example_values": [
+              1
+          ]
+      }
       ],
       "parameters": {
         "device_id": {
@@ -151,7 +165,21 @@
           "example_values": [
             "Admin"
           ]
-        }
+        },
+        {
+          "data_path": "summary.total_objects",
+          "data_type": "numeric",
+          "example_values": [
+              1
+          ]
+      },
+      {
+          "data_path": "summary.total_objects_successful",
+          "data_type": "numeric",
+          "example_values": [
+              1
+          ]
+      }
       ],
       "parameters": {
         "tag": {
@@ -216,7 +244,21 @@
           "example_values": [
             12345
           ]
-        }
+        },
+        {
+          "data_path": "summary.total_objects",
+          "data_type": "numeric",
+          "example_values": [
+              1
+          ]
+      },
+      {
+          "data_path": "summary.total_objects_successful",
+          "data_type": "numeric",
+          "example_values": [
+              1
+          ]
+      }
       ],
       "parameters": {
         "model_breach_id": {
@@ -417,7 +459,21 @@
           "example_values": [
             1234
           ]
-        }
+        },
+        {
+          "data_path": "summary.total_objects",
+          "data_type": "numeric",
+          "example_values": [
+              1
+          ]
+      },
+      {
+          "data_path": "summary.total_objects_successful",
+          "data_type": "numeric",
+          "example_values": [
+              1
+          ]
+      }
       ],
       "parameters": {
         "device_id": {
@@ -446,7 +502,7 @@
         {
           "column_name": "Model Name",
           "data_path": "action_result.data.*.model.then.name",
-          "column_order": 0,
+          "column_order": 1,
           "data_type": "string"
         },        
         {
@@ -464,31 +520,31 @@
         {
           "column_name": "Score",
           "data_path": "action_result.data.*.score",
-          "column_order": 1,
+          "column_order": 2,
           "data_type": "string"
         },
         {
           "column_name": "Acknowledged",
           "data_path": "action_result.data.*.acknowledged",
-          "column_order": 2,
+          "column_order": 3,
           "data_type": "string"
         },
         {
           "column_name": "Timestamp",
           "data_path": "action_result.data.*.time",
-          "column_order": 3,
+          "column_order": 4,
           "data_type": "numeric"
         },
         {
           "column_name": "Severity",
           "data_path": "action_result.summary.*.severity",
-          "column_order": 4,
+          "column_order": 5,
           "data_type": "numeric"
         },
         {
           "column_name": "URL",
           "data_path": "action_result.summary.*.darktrace_url",
-          "column_order": 5,
+          "column_order": 6,
           "data_type": "numeric"
         },
         {
@@ -500,7 +556,29 @@
           "example_values": [
             1234
           ]
-        }
+        },
+        {
+          "data_path": "summary.total_objects",
+          "data_type": "numeric",
+          "example_values": [
+              1
+          ]
+      },
+      {
+          "data_path": "summary.total_objects_successful",
+          "data_type": "numeric",
+          "example_values": [
+              1
+          ]
+      },
+      {
+      "data_path": "action_result.status",
+      "data_type": "string"
+    },
+    {
+      "data_path": "action_result.message",
+      "data_type": "string"
+    }
       ],
       "parameters": {
         "device_id": {
@@ -891,7 +969,21 @@
           "example_values": [
             12345
           ]
-        }
+        },
+        {
+          "data_path": "summary.total_objects",
+          "data_type": "numeric",
+          "example_values": [
+              1
+          ]
+      },
+      {
+          "data_path": "summary.total_objects_successful",
+          "data_type": "numeric",
+          "example_values": [
+              1
+          ]
+      }
       ],
       "parameters": {
         "model_breach_id": {
