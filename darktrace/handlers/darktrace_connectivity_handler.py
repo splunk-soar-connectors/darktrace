@@ -8,7 +8,7 @@ class ConnectivityHandler(DarktraceHandler):
         """
         Handler for the `test_connectivity` action
         """
-
+        self.save_progress("Testing Connectivity to your Darktrace Instance")
         action_status, result = self._client.test_connectivity(self.action_result)
 
         if phantom.is_fail(action_status):
