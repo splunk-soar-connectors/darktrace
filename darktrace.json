@@ -1187,6 +1187,7 @@
     "product_version_regex": ".*",
     "publisher": "Darktrace",
     "python_version": "3",
+    "fips_compliant": false,
     "type": "siem",
     "utctime_updated": "2021-02-26T03:45:53.665511Z"
 }
