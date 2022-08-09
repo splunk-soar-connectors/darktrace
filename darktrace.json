@@ -17,7 +17,11 @@
             "output": [
                 {
                     "data_path": "action_result.status",
-                    "data_type": "string"
+                    "data_type": "string",
+                    "example_values": [
+                        "success",
+                        "failed"
+                    ]
                 },
                 {
                     "contains": [
@@ -90,7 +94,11 @@
             "output": [
                 {
                     "data_path": "action_result.status",
-                    "data_type": "string"
+                    "data_type": "string",
+                    "example_values": [
+                        "success",
+                        "failed"
+                    ]
                 },
                 {
                     "contains": [
@@ -207,7 +215,11 @@
             "output": [
                 {
                     "data_path": "action_result.status",
-                    "data_type": "string"
+                    "data_type": "string",
+                    "example_values": [
+                        "success",
+                        "failed"
+                    ]
                 },
                 {
                     "contains": [
@@ -290,7 +302,11 @@
                 },
                 {
                     "data_path": "action_result.status",
-                    "data_type": "string"
+                    "data_type": "string",
+                    "example_values": [
+                        "success",
+                        "failed"
+                    ]
                 },
                 {
                     "data_path": "action_result.message",
@@ -298,7 +314,11 @@
                 },
                 {
                     "data_path": "action_result.status",
-                    "data_type": "string"
+                    "data_type": "string",
+                    "example_values": [
+                        "success",
+                        "failed"
+                    ]
                 },
                 {
                     "data_path": "action_result.data",
@@ -367,7 +387,11 @@
             "output": [
                 {
                     "data_path": "action_result.status",
-                    "data_type": "string"
+                    "data_type": "string",
+                    "example_values": [
+                        "success",
+                        "failed"
+                    ]
                 },
                 {
                     "contains": [
@@ -420,7 +444,7 @@
                     ]
                 },
                 {
-                    "column_name": "Mac Address",
+                    "column_name": "MAC Address",
                     "column_order": 3,
                     "contains": [
                         "mac address"
@@ -501,7 +525,11 @@
             "output": [
                 {
                     "data_path": "action_result.status",
-                    "data_type": "string"
+                    "data_type": "string",
+                    "example_values": [
+                        "success",
+                        "failed"
+                    ]
                 },
                 {
                     "contains": [
@@ -605,10 +633,14 @@
             "identifier": "acknowledge_breach",
             "output": [
                 {
-                    "column_name": "status",
+                    "column_name": "Status",
                     "column_order": 0,
                     "data_path": "action_result.status",
-                    "data_type": "string"
+                    "data_type": "string",
+                    "example_values": [
+                        "success",
+                        "failed"
+                    ]
                 },
                 {
                     "contains": [
@@ -666,10 +698,14 @@
             "identifier": "unacknowledge_breach",
             "output": [
                 {
-                    "column_name": "status",
+                    "column_name": "Status",
                     "column_order": 0,
                     "data_path": "action_result.status",
-                    "data_type": "string"
+                    "data_type": "string",
+                    "example_values": [
+                        "success",
+                        "failed"
+                    ]
                 },
                 {
                     "contains": [
@@ -727,10 +763,14 @@
             "identifier": "post_comment",
             "output": [
                 {
-                    "column_name": "status",
+                    "column_name": "Status",
                     "column_order": 2,
                     "data_path": "action_result.status",
-                    "data_type": "string"
+                    "data_type": "string",
+                    "example_values": [
+                        "success",
+                        "failed"
+                    ]
                 },
                 {
                     "column_name": "Comment",
@@ -802,10 +842,14 @@
             "identifier": "post_tag",
             "output": [
                 {
-                    "column_name": "status",
+                    "column_name": "Status",
                     "column_order": 1,
                     "data_path": "action_result.status",
-                    "data_type": "string"
+                    "data_type": "string",
+                    "example_values": [
+                        "success",
+                        "failed"
+                    ]
                 },
                 {
                     "contains": [
@@ -822,7 +866,7 @@
                     "data_type": "numeric"
                 },
                 {
-                    "column_name": "Tag added",
+                    "column_name": "Tag Added",
                     "column_order": 0,
                     "contains": [
                         "darktrace tag"
@@ -867,16 +911,15 @@
                 },
                 "duration": {
                     "data_type": "numeric",
-                    "description": "How long this tag be applied for (seconds). Ex: enter 3600 for 1 hour. Leave this entry empty if you do not want it to expire.",
-                    "order": 2,
-                    "required": false
+                    "description": "How long this tag be applied for (seconds). Ex: enter 3600 for 1 hour. Leave this entry empty if you do not want it to expire",
+                    "order": 2
                 },
                 "tag": {
                     "contains": [
                         "darktrace tag"
                     ],
                     "data_type": "string",
-                    "description": "Choose a tag to apply to the device.",
+                    "description": "Choose a tag to apply to the device",
                     "order": 1,
                     "required": true,
                     "value_list": [
@@ -885,7 +928,8 @@
                         "Manual Antigena - POL",
                         "Manual Antigena - Quarantine",
                         "Security Device"
-                    ]
+                    ],
+                    "primary": true
                 }
             },
             "read_only": false,
@@ -902,7 +946,11 @@
             "output": [
                 {
                     "data_path": "action_result.status",
-                    "data_type": "string"
+                    "data_type": "string",
+                    "example_values": [
+                        "success",
+                        "failed"
+                    ]
                 },
                 {
                     "contains": [
@@ -957,7 +1005,7 @@
                     "data_type": "numeric"
                 },
                 {
-                    "column_name": "timestamp",
+                    "column_name": "Timestamp",
                     "column_order": 0,
                     "data_path": "action_result.data.*.time",
                     "data_type": "string"
@@ -1011,25 +1059,21 @@
     "configuration": {
         "base_url": {
             "data_type": "string",
-            "default": "",
             "description": "IP address of the Darktrace Master",
             "order": 0,
-            "required": true,
-            "value_list": []
+            "required": true
         },
         "poll_aia": {
             "data_type": "boolean",
             "default": true,
             "description": "Ingest Cyber AI Analyst Investigations",
-            "order": 3,
-            "required": true
+            "order": 3
         },
         "poll_mb": {
             "data_type": "boolean",
             "default": true,
             "description": "Ingest Model Breaches",
-            "order": 4,
-            "required": true
+            "order": 4
         },
         "private_token": {
             "data_type": "password",
@@ -1047,8 +1091,7 @@
             "data_type": "boolean",
             "default": true,
             "description": "Enable TLS Certificate Verification",
-            "order": 5,
-            "required": false
+            "order": 5
         }
     },
     "description": "Darktrace",
@@ -1062,72 +1105,80 @@
     "pip39_dependencies": {
         "wheel": [
             {
-                "input_file": "wheels/py3/beautifulsoup4-4.11.1-py3-none-any.whl",
-                "module": "beautifulsoup4"
+                "module": "beautifulsoup4",
+                "input_file": "wheels/py3/beautifulsoup4-4.11.1-py3-none-any.whl"
             },
             {
-                "input_file": "wheels/shared/certifi-2021.10.8-py2.py3-none-any.whl",
-                "module": "certifi"
+                "module": "certifi",
+                "input_file": "wheels/py3/certifi-2022.6.15-py3-none-any.whl"
             },
             {
-                "input_file": "wheels/shared/chardet-4.0.0-py2.py3-none-any.whl",
-                "module": "chardet"
+                "module": "charset_normalizer",
+                "input_file": "wheels/py3/charset_normalizer-2.0.12-py3-none-any.whl"
             },
             {
-                "input_file": "wheels/shared/idna-3.3-py3-none-any.whl",
-                "module": "idna"
+                "module": "idna",
+                "input_file": "wheels/py3/idna-3.3-py3-none-any.whl"
             },
             {
-                "input_file": "wheels/shared/requests-2.27.1-py2.py3-none-any.whl",
-                "module": "requests"
+                "module": "requests",
+                "input_file": "wheels/shared/requests-2.27.1-py2.py3-none-any.whl"
             },
             {
-                "input_file": "wheels/shared/requests_toolbelt-0.9.1-py2.py3-none-any.whl",
-                "module": "requests_toolbelt"
+                "module": "requests_toolbelt",
+                "input_file": "wheels/shared/requests_toolbelt-0.9.1-py2.py3-none-any.whl"
             },
             {
-                "input_file": "wheels/py39/simplejson-3.17.6-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl",
-                "module": "simplejson"
+                "module": "simplejson",
+                "input_file": "wheels/py39/simplejson-3.17.6-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl"
             },
             {
-                "input_file": "wheels/shared/urllib3-1.26.9-py2.py3-none-any.whl",
-                "module": "urllib3"
+                "module": "soupsieve",
+                "input_file": "wheels/py3/soupsieve-2.3.2.post1-py3-none-any.whl"
+            },
+            {
+                "module": "urllib3",
+                "input_file": "wheels/shared/urllib3-1.26.11-py2.py3-none-any.whl"
             }
         ]
     },
     "pip_dependencies": {
         "wheel": [
             {
-                "input_file": "wheels/py3/beautifulsoup4-4.11.1-py3-none-any.whl",
-                "module": "beautifulsoup4"
+                "module": "beautifulsoup4",
+                "input_file": "wheels/py3/beautifulsoup4-4.11.1-py3-none-any.whl"
             },
             {
-                "input_file": "wheels/shared/certifi-2021.10.8-py2.py3-none-any.whl",
-                "module": "certifi"
+                "module": "certifi",
+                "input_file": "wheels/py3/certifi-2022.6.15-py3-none-any.whl"
             },
             {
-                "input_file": "wheels/shared/chardet-4.0.0-py2.py3-none-any.whl",
-                "module": "chardet"
+                "module": "charset_normalizer",
+                "input_file": "wheels/py3/charset_normalizer-2.0.12-py3-none-any.whl"
             },
             {
-                "input_file": "wheels/shared/idna-3.3-py3-none-any.whl",
-                "module": "idna"
+                "module": "idna",
+                "input_file": "wheels/py3/idna-3.3-py3-none-any.whl"
             },
             {
-                "input_file": "wheels/shared/requests-2.27.1-py2.py3-none-any.whl",
-                "module": "requests"
+                "module": "requests",
+                "input_file": "wheels/shared/requests-2.27.1-py2.py3-none-any.whl"
             },
             {
-                "input_file": "wheels/shared/requests_toolbelt-0.9.1-py2.py3-none-any.whl",
-                "module": "requests_toolbelt"
+                "module": "requests_toolbelt",
+                "input_file": "wheels/shared/requests_toolbelt-0.9.1-py2.py3-none-any.whl"
             },
             {
-                "input_file": "wheels/py36/simplejson-3.17.6-cp36-cp36m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl",
-                "module": "simplejson"
+                "module": "simplejson",
+                "input_file": "wheels/py36/simplejson-3.17.6-cp36-cp36m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl"
             },
             {
-                "input_file": "wheels/shared/urllib3-1.26.9-py2.py3-none-any.whl",
-                "module": "urllib3"
+                "module": "soupsieve",
+                "input_file": "wheels/py3/soupsieve-2.3.2.post1-py3-none-any.whl"
+            },
+            {
+                "module": "urllib3",
+                "input_file": "wheels/shared/urllib3-1.26.11-py2.py3-none-any.whl"
             }
         ]
     },
