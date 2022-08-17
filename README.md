@@ -2,13 +2,13 @@
 # Darktrace
 
 Publisher: Darktrace  
-Connector Version: 1\.0\.2  
+Connector Version: 1\.0\.3  
 Product Vendor: Darktrace  
 Product Name: Darktrace  
 Product Version Supported (regex): "\.\*"  
 Minimum Product Version: 5\.3\.0  
 
-Darktrace
+This app integrates with Darktrace to perform investigative and containment actions
 
 [comment]: # " File: README.md"
 [comment]: # "  Licensed under the Apache License, Version 2.0 (the 'License');"

@@ -1,5 +1,5 @@
 {
-    "app_version": "1.0.2",
+    "app_version": "1.0.3",
     "app_wizard_version": "1.0.0",
     "appid": "67c8d713-e1e2-419a-aa09-d326d011bdd6",
     "configuration": {
@@ -40,7 +40,7 @@
             "order": 5
         }
     },
-    "description": "Darktrace",
+    "description": "This app integrates with Darktrace to perform investigative and containment actions",
     "license": "Copyright (c) Darktrace, 2021",
     "logo": "logo_darktrace.svg",
     "logo_dark": "logo_darktrace_dark.svg",
@@ -135,7 +135,7 @@
     "python_version": "3",
     "fips_compliant": false,
     "type": "siem",
-    "utctime_updated": "2021-02-26T03:45:53.665511Z",
+    "utctime_updated": "2022-08-17T08:17:20.000000Z",
     "actions": [
         {
             "action": "test connectivity",
