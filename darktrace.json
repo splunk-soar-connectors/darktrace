@@ -40,7 +40,7 @@
             "order": 5
         }
     },
-    "description": "Darktrace",
+    "description": "This app integrates with Darktrace to perform investigative and containment actions",
     "license": "Copyright (c) Darktrace, 2021",
     "logo": "logo_darktrace.svg",
     "logo_dark": "logo_darktrace_dark.svg",
