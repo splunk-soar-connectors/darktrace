@@ -1,4 +1,141 @@
 {
+    "app_version": "1.0.2",
+    "app_wizard_version": "1.0.0",
+    "appid": "67c8d713-e1e2-419a-aa09-d326d011bdd6",
+    "configuration": {
+        "base_url": {
+            "data_type": "string",
+            "description": "IP address of the Darktrace Master",
+            "order": 0,
+            "required": true
+        },
+        "poll_aia": {
+            "data_type": "boolean",
+            "default": true,
+            "description": "Ingest Cyber AI Analyst Investigations",
+            "order": 3
+        },
+        "poll_mb": {
+            "data_type": "boolean",
+            "default": true,
+            "description": "Ingest Model Breaches",
+            "order": 4
+        },
+        "private_token": {
+            "data_type": "password",
+            "description": "Darktrace API Private Token",
+            "order": 2,
+            "required": true
+        },
+        "public_token": {
+            "data_type": "password",
+            "description": "Darktrace API Public Token",
+            "order": 1,
+            "required": true
+        },
+        "tls_verify": {
+            "data_type": "boolean",
+            "default": true,
+            "description": "Enable TLS Certificate Verification",
+            "order": 5
+        }
+    },
+    "description": "Darktrace",
+    "license": "Copyright (c) Darktrace, 2021",
+    "logo": "logo_darktrace.svg",
+    "logo_dark": "logo_darktrace_dark.svg",
+    "main_module": "darktrace_connector.py",
+    "min_phantom_version": "5.3.0",
+    "name": "Darktrace",
+    "package_name": "phantom_darktrace",
+    "pip39_dependencies": {
+        "wheel": [
+            {
+                "module": "beautifulsoup4",
+                "input_file": "wheels/py3/beautifulsoup4-4.11.1-py3-none-any.whl"
+            },
+            {
+                "module": "certifi",
+                "input_file": "wheels/py3/certifi-2022.6.15-py3-none-any.whl"
+            },
+            {
+                "module": "charset_normalizer",
+                "input_file": "wheels/py3/charset_normalizer-2.0.12-py3-none-any.whl"
+            },
+            {
+                "module": "idna",
+                "input_file": "wheels/py3/idna-3.3-py3-none-any.whl"
+            },
+            {
+                "module": "requests",
+                "input_file": "wheels/shared/requests-2.27.1-py2.py3-none-any.whl"
+            },
+            {
+                "module": "requests_toolbelt",
+                "input_file": "wheels/shared/requests_toolbelt-0.9.1-py2.py3-none-any.whl"
+            },
+            {
+                "module": "simplejson",
+                "input_file": "wheels/py39/simplejson-3.17.6-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl"
+            },
+            {
+                "module": "soupsieve",
+                "input_file": "wheels/py3/soupsieve-2.3.2.post1-py3-none-any.whl"
+            },
+            {
+                "module": "urllib3",
+                "input_file": "wheels/shared/urllib3-1.26.11-py2.py3-none-any.whl"
+            }
+        ]
+    },
+    "pip_dependencies": {
+        "wheel": [
+            {
+                "module": "beautifulsoup4",
+                "input_file": "wheels/py3/beautifulsoup4-4.11.1-py3-none-any.whl"
+            },
+            {
+                "module": "certifi",
+                "input_file": "wheels/py3/certifi-2022.6.15-py3-none-any.whl"
+            },
+            {
+                "module": "charset_normalizer",
+                "input_file": "wheels/py3/charset_normalizer-2.0.12-py3-none-any.whl"
+            },
+            {
+                "module": "idna",
+                "input_file": "wheels/py3/idna-3.3-py3-none-any.whl"
+            },
+            {
+                "module": "requests",
+                "input_file": "wheels/shared/requests-2.27.1-py2.py3-none-any.whl"
+            },
+            {
+                "module": "requests_toolbelt",
+                "input_file": "wheels/shared/requests_toolbelt-0.9.1-py2.py3-none-any.whl"
+            },
+            {
+                "module": "simplejson",
+                "input_file": "wheels/py36/simplejson-3.17.6-cp36-cp36m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl"
+            },
+            {
+                "module": "soupsieve",
+                "input_file": "wheels/py3/soupsieve-2.3.2.post1-py3-none-any.whl"
+            },
+            {
+                "module": "urllib3",
+                "input_file": "wheels/shared/urllib3-1.26.11-py2.py3-none-any.whl"
+            }
+        ]
+    },
+    "product_name": "Darktrace",
+    "product_vendor": "Darktrace",
+    "product_version_regex": ".*",
+    "publisher": "Darktrace",
+    "python_version": "3",
+    "fips_compliant": false,
+    "type": "siem",
+    "utctime_updated": "2021-02-26T03:45:53.665511Z",
     "actions": [
         {
             "action": "test connectivity",
@@ -1052,142 +1189,5 @@
             "type": "investigate",
             "versions": "EQ(*)"
         }
-    ],
-    "app_version": "1.0.2",
-    "app_wizard_version": "1.0.0",
-    "appid": "67c8d713-e1e2-419a-aa09-d326d011bdd6",
-    "configuration": {
-        "base_url": {
-            "data_type": "string",
-            "description": "IP address of the Darktrace Master",
-            "order": 0,
-            "required": true
-        },
-        "poll_aia": {
-            "data_type": "boolean",
-            "default": true,
-            "description": "Ingest Cyber AI Analyst Investigations",
-            "order": 3
-        },
-        "poll_mb": {
-            "data_type": "boolean",
-            "default": true,
-            "description": "Ingest Model Breaches",
-            "order": 4
-        },
-        "private_token": {
-            "data_type": "password",
-            "description": "Darktrace API Private Token",
-            "order": 2,
-            "required": true
-        },
-        "public_token": {
-            "data_type": "password",
-            "description": "Darktrace API Public Token",
-            "order": 1,
-            "required": true
-        },
-        "tls_verify": {
-            "data_type": "boolean",
-            "default": true,
-            "description": "Enable TLS Certificate Verification",
-            "order": 5
-        }
-    },
-    "description": "Darktrace",
-    "license": "Copyright (c) Darktrace, 2021",
-    "logo": "logo_darktrace.svg",
-    "logo_dark": "logo_darktrace_dark.svg",
-    "main_module": "darktrace_connector.py",
-    "min_phantom_version": "5.3.0",
-    "name": "Darktrace",
-    "package_name": "phantom_darktrace",
-    "pip39_dependencies": {
-        "wheel": [
-            {
-                "module": "beautifulsoup4",
-                "input_file": "wheels/py3/beautifulsoup4-4.11.1-py3-none-any.whl"
-            },
-            {
-                "module": "certifi",
-                "input_file": "wheels/py3/certifi-2022.6.15-py3-none-any.whl"
-            },
-            {
-                "module": "charset_normalizer",
-                "input_file": "wheels/py3/charset_normalizer-2.0.12-py3-none-any.whl"
-            },
-            {
-                "module": "idna",
-                "input_file": "wheels/py3/idna-3.3-py3-none-any.whl"
-            },
-            {
-                "module": "requests",
-                "input_file": "wheels/shared/requests-2.27.1-py2.py3-none-any.whl"
-            },
-            {
-                "module": "requests_toolbelt",
-                "input_file": "wheels/shared/requests_toolbelt-0.9.1-py2.py3-none-any.whl"
-            },
-            {
-                "module": "simplejson",
-                "input_file": "wheels/py39/simplejson-3.17.6-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl"
-            },
-            {
-                "module": "soupsieve",
-                "input_file": "wheels/py3/soupsieve-2.3.2.post1-py3-none-any.whl"
-            },
-            {
-                "module": "urllib3",
-                "input_file": "wheels/shared/urllib3-1.26.11-py2.py3-none-any.whl"
-            }
-        ]
-    },
-    "pip_dependencies": {
-        "wheel": [
-            {
-                "module": "beautifulsoup4",
-                "input_file": "wheels/py3/beautifulsoup4-4.11.1-py3-none-any.whl"
-            },
-            {
-                "module": "certifi",
-                "input_file": "wheels/py3/certifi-2022.6.15-py3-none-any.whl"
-            },
-            {
-                "module": "charset_normalizer",
-                "input_file": "wheels/py3/charset_normalizer-2.0.12-py3-none-any.whl"
-            },
-            {
-                "module": "idna",
-                "input_file": "wheels/py3/idna-3.3-py3-none-any.whl"
-            },
-            {
-                "module": "requests",
-                "input_file": "wheels/shared/requests-2.27.1-py2.py3-none-any.whl"
-            },
-            {
-                "module": "requests_toolbelt",
-                "input_file": "wheels/shared/requests_toolbelt-0.9.1-py2.py3-none-any.whl"
-            },
-            {
-                "module": "simplejson",
-                "input_file": "wheels/py36/simplejson-3.17.6-cp36-cp36m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl"
-            },
-            {
-                "module": "soupsieve",
-                "input_file": "wheels/py3/soupsieve-2.3.2.post1-py3-none-any.whl"
-            },
-            {
-                "module": "urllib3",
-                "input_file": "wheels/shared/urllib3-1.26.11-py2.py3-none-any.whl"
-            }
-        ]
-    },
-    "product_name": "Darktrace",
-    "product_vendor": "Darktrace",
-    "product_version_regex": ".*",
-    "publisher": "Darktrace",
-    "python_version": "3",
-    "fips_compliant": false,
-    "type": "siem",
-    "utctime_updated": "2021-02-26T03:45:53.665511Z"
+    ]
 }
