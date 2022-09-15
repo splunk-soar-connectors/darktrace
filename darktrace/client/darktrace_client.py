@@ -62,20 +62,20 @@ class DarktraceClient:
         self._private_token = private_token
         self._use_tsl_certificate = use_tls_certificate
 
-    def test_connectivity(self, action_result: ActionResult) -> Tuple[bool, dict]:
+    def test_connectivity(self, action_result: "ActionResult") -> Tuple[bool, dict]:
         """Call the summary statistics endpoint to test connecting to the Darktrace Box"""
         return self.get(
             action_result, TEST_CONNECTIVITY_ENDPOINT, params={"responsedata": "subnets"}
         )  # type: ignore
 
-    def get_device_summary(self, action_result: ActionResult, device_id: int) -> Tuple[bool, dict]:
+    def get_device_summary(self, action_result: "ActionResult", device_id: int) -> Tuple[bool, dict]:
         """Get a device summary"""
         return self.get(
             action_result, DEVICE_SUMMARY_ENDPOINT, params={"did": device_id}
         )  # type: ignore
 
     def get_tags_for_device(
-        self, action_result: ActionResult, device_id: int
+        self, action_result: "ActionResult", device_id: int
     ) -> Tuple[bool, List[dict]]:
         """Get the tags on a device"""
         return self.get(
@@ -83,7 +83,7 @@ class DarktraceClient:
         )  # type: ignore
 
     def post_tag_to_device(
-        self, action_result: ActionResult, device_id: int, tag: str, duration: int = None
+        self, action_result: "ActionResult", device_id: int, tag: str, duration: int = None
     ) -> Tuple[bool, dict]:
         """Tag a device for a specified duration (or indefinitely if unspecified)"""
         data = {"did": device_id, "tag": tag}
@@ -92,39 +92,39 @@ class DarktraceClient:
         return self.post(action_result, TAG_ENTITIES_ENDPOINT, data)  # type: ignore
 
     def get_tagged_devices(
-        self, action_result: ActionResult, tag: str
+        self, action_result: "ActionResult", tag: str
     ) -> Tuple[bool, Dict[str, List[dict]]]:
         """Get devices with a specific tag"""
         params = {"tag": tag, "fulldevicedetails": "true"}
         return self.get(action_result, TAG_ENTITIES_ENDPOINT, params=params)  # type: ignore
 
-    def get_device(self, action_result: ActionResult, device_id: int) -> Tuple[bool, dict]:
+    def get_device(self, action_result: "ActionResult", device_id: int) -> Tuple[bool, dict]:
         """Get Darktrace data about a device ID"""
         return self.get(action_result, DEVICES_ENDPOINT, params={"did": device_id})  # type: ignore
 
     def post_model_breach_comment(
-        self, action_result: ActionResult, model_breach_id: int, comment: str
+        self, action_result: "ActionResult", model_breach_id: int, comment: str
     ) -> Tuple[bool, Optional[dict]]:
         """Post a comment on a model breach"""
         query_uri = f"{MODEL_BREACH_ENDPOINT}/{model_breach_id}{COMMENT_BREACH}"
         return self.post(action_result, query_uri, json={"message": comment})  # type: ignore
 
     def acknowledge_breach(
-        self, action_result: ActionResult, model_breach_id: int
+        self, action_result: "ActionResult", model_breach_id: int
     ) -> Tuple[bool, Optional[dict]]:
         """Acknowledge a model breach"""
         query = f"{MODEL_BREACH_ENDPOINT}/{model_breach_id}{ACK_BREACH}"
         return self.post(action_result, query, data={"acknowledge": "true"})  # type: ignore
 
     def unacknowledge_breach(
-        self, action_result: ActionResult, model_breach_id: int
+        self, action_result: "ActionResult", model_breach_id: int
     ) -> Tuple[bool, Optional[dict]]:
         """Unacknowledge a model breach"""
         query = f"{MODEL_BREACH_ENDPOINT}/{model_breach_id}{UNACK_BREACH}"
         return self.post(action_result, query, data={"unacknowledge": "true"})  # type: ignore
 
     def get_breach_comments(
-        self, action_result: ActionResult, model_breach_id: int
+        self, action_result: "ActionResult", model_breach_id: int
     ) -> Tuple[bool, Optional[List[dict]]]:
         """Get comments on a model breach"""
         return self.get(
@@ -132,7 +132,7 @@ class DarktraceClient:
         )  # type: ignore
 
     def get_breach_connections(
-        self, action_result: ActionResult, model_breach_id: int
+        self, action_result: "ActionResult", model_breach_id: int
     ) -> Tuple[bool, Optional[List[dict]]]:
         """Get connection data associated to a model breach"""
         return self.get(
@@ -140,7 +140,7 @@ class DarktraceClient:
         )  # type: ignore
 
     def get_model_breaches(
-        self, action_result: ActionResult, start_time: datetime, end_time: datetime
+        self, action_result: "ActionResult", start_time: datetime, end_time: datetime
     ) -> Tuple[bool, Optional[List[dict]]]:
         """Get model breach data in a time range"""
         params = {
@@ -152,7 +152,7 @@ class DarktraceClient:
         return self.get(action_result, query_uri, params)  # type: ignore
 
     def get_ai_analyst_incidents(
-        self, action_result: ActionResult, start_time: datetime, end_time: datetime
+        self, action_result: "ActionResult", start_time: datetime, end_time: datetime
     ) -> Tuple[bool, Optional[List[dict]]]:
         """Get AI Analyst incident data in a time range"""
         params = {
@@ -163,7 +163,7 @@ class DarktraceClient:
         return self.get(action_result, AI_ANALYST_ENDPOINT, params=params)  # type: ignore
 
     def post(
-        self, action_result: ActionResult, query_uri: str, data: dict = None, json: dict = None
+        self, action_result: "ActionResult", query_uri: str, data: dict = None, json: dict = None
     ) -> Tuple[bool, Optional[Union[dict, List[dict]]]]:
         """Make an HTTP POST request to the Darktrace API"""
         return process_response(
@@ -171,7 +171,7 @@ class DarktraceClient:
         )
 
     def get(
-        self, action_result: ActionResult, query_uri: str, params: dict = None
+        self, action_result: "ActionResult", query_uri: str, params: dict = None
     ) -> Tuple[bool, Optional[Union[dict, List[dict]]]]:
         """Make an HTTP GET request to the Darktrace API"""
         return process_response(self._request(query_uri, "GET", params=params), action_result)
