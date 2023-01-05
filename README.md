@@ -2,7 +2,7 @@
 # Darktrace
 
 Publisher: Darktrace  
-Connector Version: 1\.0\.5  
+Connector Version: 1\.0\.6  
 Product Vendor: Darktrace  
 Product Name: Darktrace  
 Product Version Supported (regex): "\.\*"  
