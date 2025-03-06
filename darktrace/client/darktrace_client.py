@@ -197,7 +197,7 @@ class DarktraceClient:
         }
 
         TIMEOUT = 10
-        
+
         if urlencoded:
             request_data = stringify_data(data)
         else:
@@ -221,7 +221,7 @@ class DarktraceClient:
         """Create headers required for successful authentication"""
         date = now().isoformat(timespec="auto")
         signature = self._create_signature(query_uri, date, query_data, is_json=is_json)
-        
+
         if not urlencoded:
             return {"DTAPI-Token": self._token, "DTAPI-Date": date, "DTAPI-Signature": signature}
         else:
