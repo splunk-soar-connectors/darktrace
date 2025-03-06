@@ -89,7 +89,7 @@ class DarktraceClient:
         data = {"did": device_id, "tag": tag}
         if duration:
             data["duration"] = duration
-        return self.post(action_result, TAG_ENTITIES_ENDPOINT, data)  # type: ignore
+        return self.post(action_result, TAG_ENTITIES_ENDPOINT, data, urlencoded=True)  # type: ignore
 
     def get_tagged_devices(
         self, action_result: "ActionResult", tag: str
@@ -163,11 +163,12 @@ class DarktraceClient:
         return self.get(action_result, AI_ANALYST_ENDPOINT, params=params)  # type: ignore
 
     def post(
-        self, action_result: "ActionResult", query_uri: str, data: dict = None, json: dict = None
+        self, action_result: "ActionResult", query_uri: str, data: dict = None, json: dict = None,
+        urlencoded: bool = False
     ) -> Tuple[bool, Optional[Union[dict, List[dict]]]]:
         """Make an HTTP POST request to the Darktrace API"""
         return process_response(
-            self._request(query_uri, method="POST", data=data, json=json), action_result
+            self._request(query_uri, method="POST", data=data, json=json, urlencoded=urlencoded), action_result
         )
 
     def get(
@@ -184,22 +185,29 @@ class DarktraceClient:
         data: dict = None,
         json: dict = None,
         headers: Dict[str, str] = None,
+        urlencoded: bool = False,
     ) -> requests.Response:
         """Make an HTTP request to the Darktrace API"""
 
         url = f"{self.base_url}{query_uri}"
         headers = {
-            **self._create_headers(query_uri, params or data or json or None, is_json=bool(json)),
+            **self._create_headers(query_uri, params or data or json or None,
+                                   urlencoded=urlencoded, is_json=bool(json)),
             **(headers or {}),
         }
 
         TIMEOUT = 10
 
+        if urlencoded:
+            request_data = stringify_data(data)
+        else:
+            request_data = data
+
         return requests.request(
             method=method,
             url=url,
             params=params,
-            data=data,
+            data=request_data,
             json=json,
             headers=headers,
             verify=self._use_tsl_certificate,
@@ -207,12 +215,18 @@ class DarktraceClient:
         )
 
     def _create_headers(
-        self, query_uri: str, query_data: dict = None, is_json: bool = False
+        self, query_uri: str, query_data: dict = None,
+        urlencoded: bool = False, is_json: bool = False
     ) -> Dict[str, str]:
         """Create headers required for successful authentication"""
         date = now().isoformat(timespec="auto")
         signature = self._create_signature(query_uri, date, query_data, is_json=is_json)
-        return {"DTAPI-Token": self._token, "DTAPI-Date": date, "DTAPI-Signature": signature}
+
+        if not urlencoded:
+            return {"DTAPI-Token": self._token, "DTAPI-Date": date, "DTAPI-Signature": signature}
+        else:
+            return {"DTAPI-Token": self._token, "DTAPI-Date": date, "DTAPI-Signature": signature,
+                   "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"}
 
     def _create_signature(
         self, query_uri: str, date: str, query_data: dict = None, is_json: bool = False

@@ -13,7 +13,7 @@
 
 import dataclasses
 from datetime import datetime, timedelta
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 import phantom.app as phantom
 
