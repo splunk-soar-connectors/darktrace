@@ -1,3 +1,16 @@
+# Copyright (c) 2025 Splunk Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 # File: darktrace_handler.py
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,11 +25,12 @@
 # and limitations under the License.
 
 from abc import ABCMeta
-from typing import TYPE_CHECKING, Any, List, Optional, Tuple
+from typing import TYPE_CHECKING, Any, Optional
 
 from phantom.action_result import ActionResult
 
 from ..client.darktrace_client import DarktraceClient
+
 
 if TYPE_CHECKING:
     from darktrace_connector import DarktraceConnector
@@ -43,12 +57,12 @@ class DarktraceHandler(metaclass=ABCMeta):
         """Debug logs a message followed by a pretty printed object"""
         self._connector.debug_print(message, dump_object)
 
-    def save_container(self, container: dict) -> Tuple[bool, str, Optional[str]]:
+    def save_container(self, container: dict) -> tuple[bool, str, Optional[str]]:
         """
         Saves a container and artifacts. Returns a tuple of (status, status_message, id or None)
         """
         return self._connector.save_container(container)
 
-    def save_artifacts(self, artifact: List[dict]) -> Tuple[bool, str, Optional[List[str]]]:
+    def save_artifacts(self, artifact: list[dict]) -> tuple[bool, str, Optional[list[str]]]:
         """Saves artifacts. Returns a tuple of (status, status_message, List[id] or None)"""
         return self._connector.save_artifacts(artifact)
