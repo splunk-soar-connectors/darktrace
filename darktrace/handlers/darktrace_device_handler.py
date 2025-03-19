@@ -1,3 +1,16 @@
+# Copyright (c) 2025 Splunk Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 # File: darktrace_device_handler.py
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,7 +24,7 @@
 # either express or implied. See the License for the specific language governing permissions
 # and limitations under the License.
 
-from typing import Any, Dict, List
+from typing import Any
 
 import phantom.app as phantom
 
@@ -29,9 +42,7 @@ class DeviceHandler(DarktraceHandler):
 
         device_id = int(self.param["device_id"])
 
-        action_status, device_description = self._client.get_device_summary(
-            self.action_result, device_id
-        )
+        action_status, device_description = self._client.get_device_summary(self.action_result, device_id)
 
         if phantom.is_fail(action_status):
             self.save_progress("Failed retrieving device summary")
@@ -50,9 +61,7 @@ class DeviceHandler(DarktraceHandler):
 
         device_id = int(self.param["device_id"])
 
-        action_status, device_model_breaches = self._client.get_device_summary(
-            self.action_result, device_id
-        )
+        action_status, device_model_breaches = self._client.get_device_summary(self.action_result, device_id)
 
         if phantom.is_fail(action_status):
             self.save_progress("Failed retrieving device model breaches")
@@ -125,9 +134,7 @@ class DeviceHandler(DarktraceHandler):
         tag = self.param["tag"]
         duration = int(self.param["duration"]) if "duration" in self.param else None
 
-        action_status, tag_result = self._client.post_tag_to_device(
-            self.action_result, device_id, tag, duration
-        )
+        action_status, tag_result = self._client.post_tag_to_device(self.action_result, device_id, tag, duration)
 
         if phantom.is_fail(action_status):
             self.save_progress("Failed posting tag to device")
@@ -137,7 +144,7 @@ class DeviceHandler(DarktraceHandler):
 
         return self.action_result.set_status(phantom.APP_SUCCESS)
 
-    def _add_device_info_to_summary(self, devices: List[Dict[str, Any]]):
+    def _add_device_info_to_summary(self, devices: list[dict[str, Any]]):
         """
         Add device info from a list of devices to the action result summary
         """
@@ -155,7 +162,6 @@ class DeviceHandler(DarktraceHandler):
         self.action_result.update_summary(summary)
 
     def _get_model_breach_additional_info(self, model_breaches):
-
         """
         Adds model breach url and Severity to every model breach action result summary
         """
@@ -163,22 +169,16 @@ class DeviceHandler(DarktraceHandler):
         model_breach_additional_info = {}
 
         for i, model_breach in enumerate(model_breaches):
-
             severity = nget(model_breach, "model", "then", "category")
             is_compliance = nget(model_breach, "model", "then", "compliance")
             pbid = nget(model_breach, "pbid")
             score = nget(model_breach, "score")
 
             if is_compliance or severity:
-                severity = SplunkSeverity.from_category(
-                    "Compliance" if is_compliance else severity
-                ).value
+                severity = SplunkSeverity.from_category("Compliance" if is_compliance else severity).value
             else:
                 severity = SplunkSeverity.from_score(score).value
 
-            model_breach_additional_info[str(i)] = {
-                "severity": severity,
-                "darktrace_url": f"{self._client.base_url}/#modelbreach/{str(pbid)}"
-            }
+            model_breach_additional_info[str(i)] = {"severity": severity, "darktrace_url": f"{self._client.base_url}/#modelbreach/{pbid!s}"}
 
         self.action_result.update_summary(model_breach_additional_info)
