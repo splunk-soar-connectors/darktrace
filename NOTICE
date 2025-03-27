@@ -1,0 +1,50 @@
+Splunk SOAR Darktrace
+Copyright (c) Darktrace, 2021-2025
+
+Third Party Software Attributions:
+
+Name: beautifulsoup4
+Version: 4.11.1
+Author: Leonard Richardson
+License: MIT
+
+Name: certifi
+Version: 2025.1.31
+Author: Kenneth Reitz
+License: MPL-2.0
+
+Name: charset-normalizer
+Version: 2.0.12
+Author: Ahmed TAHRI @Ousret
+License: MIT
+
+Name: idna
+Version: 3.10
+Author: 
+License: 
+
+Name: requests
+Version: 2.27.1
+Author: Kenneth Reitz
+License: Apache 2.0
+
+Name: requests-toolbelt
+Version: 0.9.1
+Author: Ian Cordasco, Cory Benfield
+License: Apache 2.0
+
+Name: simplejson
+Version: 3.17.6
+Author: Bob Ippolito
+License: MIT License
+
+Name: soupsieve
+Version: 2.6
+Author: 
+License: 
+
+Name: urllib3
+Version: 1.26.20
+Author: Andrey Petrov
+License: MIT
+
