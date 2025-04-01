@@ -1,3 +1,16 @@
+# Copyright (c) 2025 Splunk Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 # File: darktrace_model_breach_handler.py
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,7 +25,7 @@
 # and limitations under the License.
 
 from datetime import datetime
-from typing import Any, Dict, List
+from typing import Any
 
 import phantom.app as phantom
 
@@ -33,9 +46,7 @@ class ModelBreachHandler(DarktraceHandler):
         model_breach_id = int(self.param["model_breach_id"])
         message = self.param["message"]
 
-        action_status, comment_result = self._client.post_model_breach_comment(
-            self.action_result, model_breach_id, message
-        )
+        action_status, comment_result = self._client.post_model_breach_comment(self.action_result, model_breach_id, message)
 
         if phantom.is_fail(action_status):
             self.save_progress("Failed posting comment to model breach")
@@ -55,9 +66,7 @@ class ModelBreachHandler(DarktraceHandler):
 
         model_breach_id = int(self.param["model_breach_id"])
 
-        action_status, breach_result = self._client.acknowledge_breach(
-            self.action_result, model_breach_id
-        )
+        action_status, breach_result = self._client.acknowledge_breach(self.action_result, model_breach_id)
 
         if phantom.is_fail(action_status):
             self.save_progress("Failed acknowledge action to model breach")
@@ -77,9 +86,7 @@ class ModelBreachHandler(DarktraceHandler):
 
         model_breach_id = int(self.param["model_breach_id"])
 
-        action_status, breach_result = self._client.unacknowledge_breach(
-            self.action_result, model_breach_id
-        )
+        action_status, breach_result = self._client.unacknowledge_breach(self.action_result, model_breach_id)
 
         if phantom.is_fail(action_status):
             self.save_progress("Failed unacknowledge action to model breach")
@@ -98,9 +105,7 @@ class ModelBreachHandler(DarktraceHandler):
         """
 
         model_breach_id = int(self.param["model_breach_id"])
-        action_status, comments = self._client.get_breach_comments(
-            self.action_result, model_breach_id
-        )
+        action_status, comments = self._client.get_breach_comments(self.action_result, model_breach_id)
 
         if phantom.is_fail(action_status):
             self.save_progress("Failed getting model breach comments")
@@ -123,9 +128,7 @@ class ModelBreachHandler(DarktraceHandler):
 
         model_breach_id = int(self.param["model_breach_id"])
 
-        action_status, connections = self._client.get_breach_connections(
-            self.action_result, model_breach_id
-        )
+        action_status, connections = self._client.get_breach_connections(self.action_result, model_breach_id)
 
         if phantom.is_fail(action_status):
             self.save_progress("Failed model breach connection")
@@ -138,7 +141,7 @@ class ModelBreachHandler(DarktraceHandler):
 
         return self.action_result.set_status(phantom.APP_SUCCESS)
 
-    def _add_comment_summary(self, comments: List[Dict[str, Any]]):
+    def _add_comment_summary(self, comments: list[dict[str, Any]]):
         """Add comment info to the action summary"""
         comment_summary = dict()
         for i, curr_entry in enumerate(comments):
@@ -150,7 +153,7 @@ class ModelBreachHandler(DarktraceHandler):
             }
         self.action_result.update_summary(comment_summary)
 
-    def _get_connection_data(self, conn: Dict[str, Any]) -> Dict[str, str]:
+    def _get_connection_data(self, conn: dict[str, Any]) -> dict[str, str]:
         """Extract data from a connection"""
 
         protocol = conn.get("protocol", "Unknown")

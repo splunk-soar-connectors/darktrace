@@ -1,3 +1,16 @@
+# Copyright (c) 2025 Splunk Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 # File: darktrace_poll_handler.py
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +26,7 @@
 
 import dataclasses
 from datetime import datetime, timedelta
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Optional
 
 import phantom.app as phantom
 
@@ -60,7 +73,7 @@ class PollHandler(DarktraceHandler):
         self.save_progress("Completed poll cycle")
         return self.action_result.set_status(phantom.APP_SUCCESS)
 
-    def _determine_time_range(self) -> Tuple[datetime, datetime, datetime]:
+    def _determine_time_range(self) -> tuple[datetime, datetime, datetime]:
         """
         Get the time range for a poll.
 
@@ -86,9 +99,7 @@ class PollHandler(DarktraceHandler):
         """Poll for model breaches"""
 
         self.debug_print("Polling Darktrace model breaches")
-        action_status, model_breaches = self._client.get_model_breaches(
-            self.action_result, start_datetime, end_datetime
-        )
+        action_status, model_breaches = self._client.get_model_breaches(self.action_result, start_datetime, end_datetime)
 
         if phantom.is_fail(action_status):
             self.save_progress("Failed posting tag to device")
@@ -120,9 +131,7 @@ class PollHandler(DarktraceHandler):
 
         return error_occurred
 
-    def _save_model_breach(
-        self, model_breach_dict: Dict[str, Any]
-    ) -> Tuple[str, Optional[ModelBreachContainer]]:
+    def _save_model_breach(self, model_breach_dict: dict[str, Any]) -> tuple[str, Optional[ModelBreachContainer]]:
         """Construct and save a container from a model breach"""
 
         model_breach_container = ModelBreachContainer(model_breach_dict)
@@ -138,14 +147,10 @@ class PollHandler(DarktraceHandler):
         self.save_progress(f"Container saved - {container_id}")
         return container_id, model_breach_container  # type: ignore
 
-    def _create_model_breach_artifacts(
-        self, container: ModelBreachContainer, model_breach_dict: Dict[str, Any], container_id: str
-    ):
+    def _create_model_breach_artifacts(self, container: ModelBreachContainer, model_breach_dict: dict[str, Any], container_id: str):
         """Construct artifacts from a model breach"""
 
-        model_breach_artifact = ModelBreachArtifact(
-            container, model_breach_dict, container_id, self._client.base_url
-        )
+        model_breach_artifact = ModelBreachArtifact(container, model_breach_dict, container_id, self._client.base_url)
         artifact = dataclasses.asdict(model_breach_artifact)
         creation_status, creation_msg, artifact_id_list = self.save_artifacts([artifact])
         if phantom.is_fail(creation_status):
@@ -160,9 +165,7 @@ class PollHandler(DarktraceHandler):
         """Poll for AI Analyst incidents"""
 
         self.debug_print("Polling Darktrace AI Analyst incidents")
-        action_status, raw_incident_events = self._client.get_ai_analyst_incidents(
-            self.action_result, start_datetime, end_datetime
-        )
+        action_status, raw_incident_events = self._client.get_ai_analyst_incidents(self.action_result, start_datetime, end_datetime)
 
         if phantom.is_fail(action_status):
             self.save_progress("Failed posting tag to device")
@@ -175,7 +178,6 @@ class PollHandler(DarktraceHandler):
 
         error_occurred = False
         for incident_id, incident_events in incidents.items():
-
             # save ai analyst container
             container_id = self._save_ai_analyst_incident(incident_id, incident_events)
 
@@ -188,7 +190,7 @@ class PollHandler(DarktraceHandler):
 
         return error_occurred
 
-    def _create_incidents(self, incident_events: List[dict]) -> Dict[str, List[dict]]:
+    def _create_incidents(self, incident_events: list[dict]) -> dict[str, list[dict]]:
         """
         Extract incident events into a dictionary of incidents.
 
@@ -207,7 +209,7 @@ class PollHandler(DarktraceHandler):
 
         return incidents
 
-    def _save_ai_analyst_incident(self, incident_id: str, incident_events: List[dict]) -> str:
+    def _save_ai_analyst_incident(self, incident_id: str, incident_events: list[dict]) -> str:
         """
         Constuct and save a container from an incident
         """
@@ -218,14 +220,12 @@ class PollHandler(DarktraceHandler):
         if phantom.is_fail(action_status):
             self.debug_print(creation_msg)
             self.save_progress(f"Error creating container for AIAnalyst Incident {creation_msg}")
-            self.action_result.set_status(
-                phantom.APP_ERROR, f"Error creating container for pbid {creation_msg}"
-            )
+            self.action_result.set_status(phantom.APP_ERROR, f"Error creating container for pbid {creation_msg}")
             return ""
         self.save_progress(f"Container saved - {container_id}")
         return container_id  # type: ignore
 
-    def _create_ai_analyst_artifacts(self, incident_events: List[dict], container_id: str):
+    def _create_ai_analyst_artifacts(self, incident_events: list[dict], container_id: str):
         """
         Create the artifacts for an incident
 
@@ -235,9 +235,7 @@ class PollHandler(DarktraceHandler):
         for incident in incident_events:
             ai_analyst_artifact = AIAnalystArtifact(incident, container_id, self._client.base_url)
             incident_artifact = dataclasses.asdict(ai_analyst_artifact)
-            related_breach_artifacts = ai_analyst_artifact.get_breach_artifacts(
-                incident, self._client.base_url
-            )
+            related_breach_artifacts = ai_analyst_artifact.get_breach_artifacts(incident, self._client.base_url)
             artifacts = [incident_artifact, *related_breach_artifacts]
             creation_status, creation_msg, artifact_ids = self.save_artifacts(artifacts)
 

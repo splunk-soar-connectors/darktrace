@@ -1,3 +1,16 @@
+# Copyright (c) 2025 Splunk Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 # File: darktrace_resp_processer.py
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +28,7 @@
 Functions to process a response from the Darktrace API
 """
 
-from typing import Any, List, Optional, Tuple, Union
+from typing import Any, Optional, Union
 
 import phantom.app as phantom
 import requests
@@ -23,24 +36,18 @@ from bs4 import BeautifulSoup
 from phantom.action_result import ActionResult
 
 
-def _process_empty_response(
-    response: requests.Response, action_result: ActionResult
-) -> Tuple[bool, Optional[dict]]:
+def _process_empty_response(response: requests.Response, action_result: ActionResult) -> tuple[bool, Optional[dict]]:
     """Handler for an empty response. Always errors as never expected."""
     if response.status_code == 200:
         return (phantom.APP_SUCCESS, {})
 
     return (
-        action_result.set_status(
-            phantom.APP_ERROR, "Empty response and no information in the header"
-        ),
+        action_result.set_status(phantom.APP_ERROR, "Empty response and no information in the header"),
         None,
     )
 
 
-def _process_html_response(
-    response: requests.Response, action_result: ActionResult
-) -> Tuple[bool, Optional[dict]]:
+def _process_html_response(response: requests.Response, action_result: ActionResult) -> tuple[bool, Optional[dict]]:
     """Handler for an HTML response. Always errors as HTML is never expected."""
 
     status_code = response.status_code
@@ -60,9 +67,7 @@ def _process_html_response(
     return (action_result.set_status(phantom.APP_ERROR, message), None)
 
 
-def _process_json_response(
-    resp: requests.Response, action_result: ActionResult
-) -> Tuple[bool, Optional[Any]]:
+def _process_json_response(resp: requests.Response, action_result: ActionResult) -> tuple[bool, Optional[Any]]:
     """
     Handler for a JSON response.
     Tries to return the JSON from the response and errors if this fails.
@@ -72,9 +77,7 @@ def _process_json_response(
         resp_json = resp.json()
     except requests.JSONDecodeError as excep:
         return (
-            action_result.set_status(
-                phantom.APP_ERROR, "Unable to parse JSON response.", exception=excep
-            ),
+            action_result.set_status(phantom.APP_ERROR, "Unable to parse JSON response.", exception=excep),
             None,
         )
 
@@ -82,18 +85,14 @@ def _process_json_response(
         return (phantom.APP_SUCCESS, resp_json)
 
     message = (
-        "Error from server. "
-        f"Status Code: {resp.status_code} "
-        f'Data from server: {resp.text.replace("{", "{{").replace("}", "}}")}'
+        f"Error from server. Status Code: {resp.status_code} Data from server: {resp.text.replace('{', '{{').replace('}', '}}')}"
         # f"Original request: Url - {resp.request.url} Body - {resp.request.body}"
     )
 
     return (action_result.set_status(phantom.APP_ERROR, message), None)
 
 
-def process_response(
-    resp: requests.Response, action_result: ActionResult
-) -> Tuple[bool, Optional[Union[dict, List[dict]]]]:
+def process_response(resp: requests.Response, action_result: ActionResult) -> tuple[bool, Optional[Union[dict, list[dict]]]]:
     """
     Process a response from the Darktrace API. Only returns a success for JSON responses or empty 200 responses
     """
@@ -121,7 +120,7 @@ def process_response(
     message = (
         "Can't process response from server. "
         f"Status Code: {resp.status_code} "
-        f'Data from server: {resp.text.replace("{", "{{").replace("}", "}}")}'
+        f"Data from server: {resp.text.replace('{', '{{').replace('}', '}}')}"
     )
 
     return (action_result.set_status(phantom.APP_ERROR, message), None)
