@@ -1,3 +1,2 @@
 **Unreleased**
-
-* chore(ci): Pre-commit config updates
+* Fix for posting tags into Darktrace
