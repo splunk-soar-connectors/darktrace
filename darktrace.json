@@ -55,7 +55,7 @@
     "python_version": "3",
     "fips_compliant": false,
     "type": "siem",
-    "utctime_updated": "2025-03-06T11:23:01.000000Z",
+    "utctime_updated": "2025-04-14T15:51:36.096676Z",
     "actions": [
         {
             "action": "test connectivity",
