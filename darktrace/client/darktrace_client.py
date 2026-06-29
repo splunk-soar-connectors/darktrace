@@ -1,4 +1,4 @@
-# Copyright (c) 2025 Splunk Inc.
+# Copyright (c) 2025-2026 Splunk Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -71,7 +71,6 @@ class DarktraceClient:
     def from_connector(cls, connector: "DarktraceConnector") -> "DarktraceClient":
         """Create a client from the DarktraceConnector object"""
         config = connector.get_config()
-        connector.debug_print(config)
         return cls(
             config["base_url"],
             config["public_token"],

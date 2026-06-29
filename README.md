@@ -1,9 +1,9 @@
 # Darktrace
 
-Publisher: Darktrace \
-Connector Version: 1.0.8 \
-Product Vendor: Darktrace \
-Product Name: Darktrace \
+Publisher: Darktrace <br>
+Connector Version: 1.0.8 <br>
+Product Vendor: Darktrace <br>
+Product Name: Darktrace <br>
 Minimum Product Version: 5.3.0
 
 This app integrates with Darktrace to perform investigative and containment actions
@@ -31,24 +31,24 @@ VARIABLE | REQUIRED | TYPE | DESCRIPTION
 
 ### Supported Actions
 
-[test connectivity](#action-test-connectivity) - Validate the asset configuration for connectivity using the supplied configuration \
-[get device tags](#action-get-device-tags) - Receive all of the tags that are currently applied to a device \
-[get tagged devices](#action-get-tagged-devices) - Receive all of the devices that currently have a given tag \
-[get breach comments](#action-get-breach-comments) - Receive all comments made on a model breach \
-[on poll](#action-on-poll) - Ingests Darktrace model breaches and Cyber AI Analyst investigations \
-[get device description](#action-get-device-description) - Receive device description for the specified device \
-[get device modelbreaches](#action-get-device-modelbreaches) - Receive recent model breaches for the specified device \
-[acknowledge breach](#action-acknowledge-breach) - Acknowledge a model breach \
-[unacknowledge breach](#action-unacknowledge-breach) - Unacknowledge a model breach \
-[post comment](#action-post-comment) - Post a comment to a model breach \
-[post tag](#action-post-tag) - Post a tag to a device \
+[test connectivity](#action-test-connectivity) - Validate the asset configuration for connectivity using the supplied configuration <br>
+[get device tags](#action-get-device-tags) - Receive all of the tags that are currently applied to a device <br>
+[get tagged devices](#action-get-tagged-devices) - Receive all of the devices that currently have a given tag <br>
+[get breach comments](#action-get-breach-comments) - Receive all comments made on a model breach <br>
+[on poll](#action-on-poll) - Ingests Darktrace model breaches and Cyber AI Analyst investigations <br>
+[get device description](#action-get-device-description) - Receive device description for the specified device <br>
+[get device modelbreaches](#action-get-device-modelbreaches) - Receive recent model breaches for the specified device <br>
+[acknowledge breach](#action-acknowledge-breach) - Acknowledge a model breach <br>
+[unacknowledge breach](#action-unacknowledge-breach) - Unacknowledge a model breach <br>
+[post comment](#action-post-comment) - Post a comment to a model breach <br>
+[post tag](#action-post-tag) - Post a tag to a device <br>
 [get breach connections](#action-get-breach-connections) - Receive connections involved in a model breach
 
 ## action: 'test connectivity'
 
 Validate the asset configuration for connectivity using the supplied configuration
 
-Type: **test** \
+Type: **test** <br>
 Read only: **True**
 
 #### Action Parameters
@@ -63,7 +63,7 @@ No Output
 
 Receive all of the tags that are currently applied to a device
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **True**
 
 #### Action Parameters
@@ -88,7 +88,7 @@ summary.total_objects_successful | numeric | | 1 |
 
 Receive all of the devices that currently have a given tag
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **True**
 
 #### Action Parameters
@@ -118,7 +118,7 @@ summary.total_objects_successful | numeric | | 1 |
 
 Receive all comments made on a model breach
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **True**
 
 #### Action Parameters
@@ -145,7 +145,7 @@ summary.total_objects_successful | numeric | | 1 |
 
 Ingests Darktrace model breaches and Cyber AI Analyst investigations
 
-Type: **ingest** \
+Type: **ingest** <br>
 Read only: **True**
 
 #### Action Parameters
@@ -177,7 +177,7 @@ action_result.parameter.artifact_count | numeric | | |
 
 Receive device description for the specified device
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **True**
 
 #### Action Parameters
@@ -210,7 +210,7 @@ summary.total_objects_successful | numeric | | 1 |
 
 Receive recent model breaches for the specified device
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **True**
 
 #### Action Parameters
@@ -240,7 +240,7 @@ summary.total_objects_successful | numeric | | 1 |
 
 Acknowledge a model breach
 
-Type: **correct** \
+Type: **correct** <br>
 Read only: **False**
 
 #### Action Parameters
@@ -265,7 +265,7 @@ summary.total_objects_successful | numeric | | |
 
 Unacknowledge a model breach
 
-Type: **correct** \
+Type: **correct** <br>
 Read only: **False**
 
 #### Action Parameters
@@ -290,7 +290,7 @@ summary.total_objects_successful | numeric | | |
 
 Post a comment to a model breach
 
-Type: **correct** \
+Type: **correct** <br>
 Read only: **False**
 
 #### Action Parameters
@@ -317,7 +317,7 @@ summary.total_objects_successful | numeric | | |
 
 Post a tag to a device
 
-Type: **correct** \
+Type: **correct** <br>
 Read only: **False**
 
 #### Action Parameters
@@ -346,7 +346,7 @@ summary.total_objects_successful | numeric | | |
 
 Receive connections involved in a model breach
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **True**
 
 #### Action Parameters
@@ -378,7 +378,7 @@ ______________________________________________________________________
 
 Auto-generated Splunk SOAR Connector documentation.
 
-Copyright 2025 Splunk Inc.
+Copyright 2026 Splunk Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
