@@ -1,5 +1,5 @@
 {
-    "app_version": "1.0.8",
+    "app_version": "1.0.9",
     "app_wizard_version": "1.0.0",
     "appid": "67c8d713-e1e2-419a-aa09-d326d011bdd6",
     "configuration": {
@@ -55,7 +55,7 @@
     "python_version": "3",
     "fips_compliant": false,
     "type": "siem",
-    "utctime_updated": "2025-04-14T15:51:36.096676Z",
+    "utctime_updated": "2026-06-29T18:37:58.536003Z",
     "actions": [
         {
             "action": "test connectivity",

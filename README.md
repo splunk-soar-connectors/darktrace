@@ -1,7 +1,7 @@
 # Darktrace
 
 Publisher: Darktrace <br>
-Connector Version: 1.0.8 <br>
+Connector Version: 1.0.9 <br>
 Product Vendor: Darktrace <br>
 Product Name: Darktrace <br>
 Minimum Product Version: 5.3.0
